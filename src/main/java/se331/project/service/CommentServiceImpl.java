@@ -8,6 +8,9 @@ import se331.project.entity.News;
 import se331.project.repository.CommentRepository;
 import se331.project.repository.NewsRepository;
 import se331.project.repository.UserRepository;
+import se331.project.entity.User;
+import java.time.LocalDateTime;
+
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +21,35 @@ public class CommentServiceImpl implements CommentService {
     final UserRepository userRepository;
 
 
+    @Override
+    @Transactional
+    // method for add new comement and it also can update vote fake/notfake
+    public Comment save(Long newsId, Long authorId, Comment comment) {
+        //find id comment
+        News relatedNews = newsRepository.findById(newsId).orElse(null);
+        User author = userRepository.findById(authorId).orElse(null);
+
+        if (relatedNews == null || author == null) {
+            return null;
+        }
+
+        //setting data comemmt object
+        comment.setNews(relatedNews);
+        comment.setAuthor(author);
+        comment.setCommentDateTime(LocalDateTime.now());
+
+
+        //updatevote
+        if ("fake".equals(comment.getVoteType())) {
+            relatedNews.setFakeCount(relatedNews.getFakeCount() + 1);
+        } else if ("not-fake".equals(comment.getVoteType())) {
+            relatedNews.setNotFakeCount(relatedNews.getNotFakeCount() + 1);
+        }
+
+        // save all change
+        newsRepository.save(relatedNews);
+        return commentRepository.save(comment);
+    }
 
 
     @Override

@@ -15,10 +15,18 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop #I changed to create-drop for a while, to also drop schema
   # 'servlet' is a child of the top-level 'spring' key
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
 
+
+application:
+  security:
+    jwt:
+      secret-key: 45ca55b5d46e1967633b8876bc9dccf2ff3f67591e4ca2822cf646cce3179b857e4b32186a8f4c5a191ef9c787e94608a5891da2259ba9419bce2e88cea04457
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 day

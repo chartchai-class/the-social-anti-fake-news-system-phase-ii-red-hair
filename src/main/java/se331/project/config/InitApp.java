@@ -4,15 +4,19 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import se331.project.entity.Comment;
 import se331.project.entity.News;
+import se331.project.entity.Role;
 import se331.project.entity.User;
 import se331.project.repository.CommentRepository;
 import se331.project.repository.NewsRepository;
 import se331.project.repository.UserRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -26,16 +30,16 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Override
     @Transactional
     public void onApplicationEvent(ApplicationReadyEvent event) {
-
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
 
         // user that have differrent role ** idk we should have profile image?
-        User admin = User.builder().firstName("Admin").lastName("User").email("admin@test.com").password("password").role("ADMIN").profileImage("https://i.pravatar.cc/150?u=admin").build();
+        User admin = User.builder().username("admin").firstName("Admin").lastName("User").email("admin@test.com").password(encoder.encode("password")).roles(List.of(Role.ROLE_ADMIN)).enabled(true).profileImage("https://i.pravatar.cc/150?u=admin").build();
         userRepository.save(admin);
 
-        User member = User.builder().firstName("Member").lastName("User").email("member@test.com").password("password").role("MEMBER").profileImage("https://i.pravatar.cc/150?u=member").build();
+        User member = User.builder().username("member").firstName("Member").lastName("User").email("member@test.com").password(encoder.encode("password")).roles(List.of(Role.ROLE_MEMBER)).enabled(true).profileImage("https://i.pravatar.cc/150?u=member").build();
         userRepository.save(member);
 
-        User reader = User.builder().firstName("Reader").lastName("User").email("reader@test.com").password("password").role("READER").profileImage("https://i.pravatar.cc/150?u=reader").build();
+        User reader = User.builder().username("reader").firstName("Reader").lastName("User").email("reader@test.com").password(encoder.encode("password")).roles(List.of(Role.ROLE_READER)).enabled(true).profileImage("https://i.pravatar.cc/150?u=reader").build();
         userRepository.save(reader);
 
 

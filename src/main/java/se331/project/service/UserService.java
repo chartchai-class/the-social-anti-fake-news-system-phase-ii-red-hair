@@ -1,11 +1,17 @@
-package se331.project.dao;
+package se331.project.service;
 
+import jakarta.transaction.Transactional;
 import se331.project.entity.User;
+
 import java.util.Optional;
 
-public interface UserDao {
+public interface UserService {
     Optional<User> findById(Long id);
+
+    @Transactional
     User findByUsername(String username);
+
     User findByEmail(String email);
+
     User save(User user);
 }

@@ -10,4 +10,6 @@ import se331.project.entity.News;
 public interface NewsService {
     Page<News> getNews(String status, String search, Pageable pageable);
     News getNewsById(Long id);
+    News save(News news);
+    void deleteById(Long id);
 }

@@ -1,4 +1,4 @@
-package se331.project.security.user;
+package se331.project.entity;
 
 public enum Role {
 

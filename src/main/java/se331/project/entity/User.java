@@ -1,5 +1,6 @@
 package se331.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,13 +25,15 @@ public class User {
     String email;
     String password;
     String role; // idk sort later
-    String profileImage;
+    String profileImage; // idk we should have this?
 //user post many new
     @OneToMany(mappedBy = "reporter")
+    @JsonManagedReference("user-news")
     @Builder.Default
     private List<News> reportedNews = new ArrayList<>();
 // user can write many comment
     @OneToMany(mappedBy = "author")
     @Builder.Default
+    @JsonManagedReference("user-comment")
     private List<Comment> comments = new ArrayList<>();
 }

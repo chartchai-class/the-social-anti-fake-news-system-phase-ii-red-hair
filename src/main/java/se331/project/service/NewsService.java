@@ -8,6 +8,8 @@ import se331.project.entity.News;
 
 // this i will use to pull data and send to frontend
 public interface NewsService {
-    Page<News> getNews(Pageable pageRequest);
+    Page<News> getNews(String status, String search, Pageable pageable);
     News getNewsById(Long id);
+    News save(News news);
+    void deleteById(Long id);
 }

@@ -15,13 +15,35 @@ public class NewsServiceImpl implements NewsService {
     final NewsRepository newsRepository;
 
     @Override
-    public Page<News> getNews(Pageable pageRequest) {
-        return newsDao.getNews(pageRequest);
+    public Page<News> getNews(String status, String search, Pageable pageable) {
+        // check if it have serch value send or not
+        if (search != null && !search.isEmpty()) {
+            return newsDao.getNews(search, search, pageable);
+        }
+        // if dont have serch value check if it have votetype or not
+        else if (status != null && !status.isEmpty()) {
+            return newsDao.getNews(status, pageable);
+        }
+        // if no search or votetype it will get all data
+        else {
+            return newsDao.getNews(pageable);
+        }
     }
 
     @Override
     public News getNewsById(Long id) {
-        // if not found it will return null
+
         return newsRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public News save(News news) {
+        // can add security here for user role
+        return newsRepository.save(news);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        newsRepository.deleteById(id);
     }
 }

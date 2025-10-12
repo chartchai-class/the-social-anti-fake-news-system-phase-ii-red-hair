@@ -1,49 +1,63 @@
 package se331.project.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import se331.project.dao.CommentDao;
 import se331.project.entity.Comment;
 import se331.project.entity.News;
-import se331.project.entity.User;
+import se331.project.repository.CommentRepository;
 import se331.project.repository.NewsRepository;
 import se331.project.repository.UserRepository;
-
-import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService {
-    final CommentDao commentDao;
+
+    final CommentRepository commentRepository;
     final NewsRepository newsRepository;
     final UserRepository userRepository;
 
+
+
+
     @Override
-    // it look Strangely complicated maybe will change later
-    // logic for create new comment and link to new and user
-    // this is explan how it work
-    public Comment save(Long newsId, Long authorId, Comment comment) {
-        // it will find the related news and user form data
-        News news = newsRepository.findById(newsId).orElse(null);
-        User author = userRepository.findById(authorId).orElse(null);
+    @Transactional // this guy use to roll back when it have eeror when delete , make database save
 
-        // then if it found , it gonna link to the new comemnt
-        if (news != null && author != null) {
-            comment.setNews(news);
-            comment.setAuthor(author);
-            comment.setCommentDateTime(LocalDateTime.now());
+    // this method can delete comment by id and it will count new vote for the news that have the deleted comment
+    public void deleteById(Long id) {
 
-            // this is the update counts on the News entity
-            if (comment.getVoteType().equals("fake")) {
-                news.setFakeCount(news.getFakeCount() + 1);
-            } else if (comment.getVoteType().equals("not-fake")) {
-                news.setNotFakeCount(news.getNotFakeCount() + 1);
+
+        //find id comment for delete
+        Comment commentToDelete = commentRepository.findById(id).orElse(null);
+
+
+        if (commentToDelete == null) {
+            return;
+        }
+
+        // pull data
+        News relatedNews = commentToDelete.getNews();
+
+
+        // check that this commend related the news
+        if (relatedNews != null) {
+
+            //check votetype
+            if ("fake".equals(commentToDelete.getVoteType())) {
+               // if fake decress 1  fake count
+                relatedNews.setFakeCount(relatedNews.getFakeCount() - 1);
+
+            } else if ("not-fake".equals(commentToDelete.getVoteType())) {
+                // not fake also delete one not fake count
+                relatedNews.setNotFakeCount(relatedNews.getNotFakeCount() - 1);
             }
 
-            // and this is save the updated new and the new comment
-            newsRepository.save(news);
-            return commentDao.save(comment);
+
+            //save data that get update
+            newsRepository.save(relatedNews);
         }
-        return null;
+
+        //delete comment in database
+        commentRepository.delete(commentToDelete);
     }
 }

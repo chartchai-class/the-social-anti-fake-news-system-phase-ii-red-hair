@@ -30,8 +30,8 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String parentId;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     @Column(unique = true)
     private String username;
     private String email;

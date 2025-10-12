@@ -1,7 +1,7 @@
 package se331.project.entity;
 
 public enum Role {
-
-  ROLE_USER,ROLE_ADMIN
+  // maybe ROLE_GUEST later
+  ROLE_READER,ROLE_MEMBER,ROLE_ADMIN
 
 }

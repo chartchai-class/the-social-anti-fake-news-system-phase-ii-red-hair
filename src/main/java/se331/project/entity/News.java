@@ -46,5 +46,5 @@ public class News {
     @OneToMany(mappedBy = "news", cascade = CascadeType.ALL)
     @Builder.Default
     @JsonManagedReference("news-comment")
-    private List<Comment> Comments = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<>();
 }

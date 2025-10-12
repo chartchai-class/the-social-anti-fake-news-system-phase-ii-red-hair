@@ -1,5 +1,7 @@
 package se331.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +20,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(length = 2000)
     private String content;
 
     private String image;
@@ -27,9 +29,11 @@ public class Comment {
 
     // this comment will belong to new
     @ManyToOne
+    @JsonBackReference("news-comment")  // stop loop
     private News news;
 
     // comment can have one user
     @ManyToOne
+    @JsonBackReference("user-comment")
     private User author;
 }

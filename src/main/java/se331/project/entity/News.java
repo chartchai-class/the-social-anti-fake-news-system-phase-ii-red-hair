@@ -1,5 +1,7 @@
 package se331.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,22 +26,25 @@ public class News {
     private String category;
     private LocalDateTime newsDateTime;
 
-    @Column
+    @Column (length = 500)
     private String description;
 
-    @Column
+    @Column(length = 10000)
     private String content;
 
     private String image; //  url for image
     private Integer fakeCount;
     private Integer notFakeCount;
+    private String voteType;
 
     // new can oly by one user
     @ManyToOne
+    @JsonBackReference("user-news") //stop loop
     private User reporter;
 
     // new have many comment
     @OneToMany(mappedBy = "news")
     @Builder.Default
+    @JsonManagedReference("news-comment")
     private List<Comment> Comments = new ArrayList<>();
 }

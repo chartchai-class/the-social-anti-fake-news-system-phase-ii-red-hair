@@ -35,4 +35,15 @@ public class NewsServiceImpl implements NewsService {
 
         return newsRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public News save(News news) {
+        // can add security here for user role
+        return newsRepository.save(news);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        newsRepository.deleteById(id);
+    }
 }

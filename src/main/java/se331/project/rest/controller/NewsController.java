@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import se331.project.entity.News;
 import se331.project.service.NewsService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import java.time.LocalDateTime;
 
 @RestController
 @RequiredArgsConstructor
@@ -40,5 +44,22 @@ public class NewsController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "News not found with id: " + id);
         }
         return ResponseEntity.ok(news);
+    }
+
+    //this is api for add news (User)
+    @PostMapping("/news")
+    public ResponseEntity<?> createNews(@RequestBody News news) {
+        // can use to set time before save news
+        news.setNewsDateTime(LocalDateTime.now());
+        News newNews = newsService.save(news);
+        return ResponseEntity.ok(newNews);
+    }
+
+    // this api use to delete news (Admin)
+    @DeleteMapping("/news/{id}")
+    public ResponseEntity<?> deleteNews(@PathVariable("id") Long id) {
+        newsService.deleteById(id);
+        // self remider for me that when successful delete it will normal show 204 ,
+        return ResponseEntity.noContent().build();
     }
 }

@@ -21,7 +21,7 @@ public class UserDto {
     String username;
     String email;
     String profileImage;
-    List<News> reportedNews;
+    List<UserNewsDto> reportedNews;
     List<Comment> comments;
     List<Role> roles;
 }

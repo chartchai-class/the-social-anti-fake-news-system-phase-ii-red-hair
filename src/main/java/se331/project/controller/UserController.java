@@ -39,7 +39,7 @@ public class UserController {
         return new ResponseEntity<>(AMapper.INSTANCE.getUserDto(user), HttpStatus.OK);
     }
 
-    @PostMapping("/users/{id}/role")
+    @PutMapping("/users/{id}/role")
     public ResponseEntity<?> updateUserRole(@PathVariable Long id,
                                             @RequestBody List<Role> newRole){
         User user = userService.findById(id).orElse(null);
@@ -48,7 +48,7 @@ public class UserController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         }
 
-        user.getRoles().addAll(newRole);
+        user.setRoles(newRole);
         User updatedUser = userService.save(user);
         return new ResponseEntity<>(AMapper.INSTANCE.getUserDto(updatedUser), HttpStatus.OK);
     }

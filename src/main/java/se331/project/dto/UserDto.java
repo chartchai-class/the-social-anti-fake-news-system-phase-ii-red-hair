@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+// only have user data for not having loop
 public class UserDto {
     Long id;
     String firstname;

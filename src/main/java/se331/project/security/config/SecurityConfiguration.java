@@ -5,6 +5,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -40,7 +41,10 @@ public class SecurityConfiguration {
             .csrf((crsf) -> crsf.disable())
             .authorizeHttpRequests((authorize) -> {
                 authorize.requestMatchers("/api/v1/auth/**").permitAll()
-                .anyRequest().authenticated();
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST,"/users/{id}/role").hasRole("ADMIN")
+                        .anyRequest().authenticated();
             })
 
             .sessionManagement((session) ->{

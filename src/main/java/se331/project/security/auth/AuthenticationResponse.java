@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se331.project.dto.UserAuthDto;
 import se331.project.dto.UserDto;
 
 @Data
@@ -18,5 +19,5 @@ public class AuthenticationResponse {
   @JsonProperty("refresh_token")
   private String refreshToken;
 
-  private UserDto user;
+  private UserAuthDto user;
 }

@@ -1,4 +1,4 @@
-package se331.project.rest.controller;
+package se331.project.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

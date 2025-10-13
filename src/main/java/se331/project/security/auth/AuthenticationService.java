@@ -18,6 +18,7 @@ import se331.project.security.token.TokenType;
 import se331.project.entity.Role;
 import se331.project.entity.User;
 import se331.project.repository.UserRepository;
+import se331.project.util.AMapper;
 
 import java.io.IOException;
 import java.util.List;
@@ -66,6 +67,7 @@ public class AuthenticationService {
     return AuthenticationResponse.builder()
             .accessToken(jwtToken)
             .refreshToken(refreshToken)
+            .user(AMapper.INSTANCE.getUserDto(user))
             .build();
   }
 

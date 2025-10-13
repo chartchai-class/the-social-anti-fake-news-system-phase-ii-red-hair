@@ -29,11 +29,9 @@ public class Comment {
 
     // this comment will belong to new
     @ManyToOne
-    @JsonBackReference("news-comment")  // stop loop
     private News news;
 
     // comment can have one user
     @ManyToOne
-    @JsonBackReference("user-comment")
     private User author;
 }

@@ -45,7 +45,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
         // News by member
         News news1 = News.builder().title("member news01").category("Technology").reporter(member).newsDateTime(LocalDateTime.now().minusDays(1)).description("A new study reveals that cats are officially the supreme rulers of all online content.").content("In a landmark study, researchers have concluded that the internet is a sophisticated system for sharing cat pictures.").image("https://placekitten.com/800/400").fakeCount(10).notFakeCount(150).build();
-        news1.setVoteType(calculateVoteType(news1)); // คำนวณ voteType
+        news1.setVoteType(calculateVoteType(news1));
         newsRepository.save(news1);
 
         News news2 = News.builder().title("member news02").category("Health").reporter(member).newsDateTime(LocalDateTime.now().minusDays(2)).description("A local resident has now seen the light regarding the popular breakfast item.").content("John Doe, 34, today admitted that his long-standing opposition to avocado toast was 'misguided'.").image("https://images.unsplash.com/photo-1582572288450-e2d17c7a5f3a").fakeCount(120).notFakeCount(5).build();

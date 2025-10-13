@@ -41,14 +41,12 @@ public class User implements UserDetails {
 
     //user post many new
     @OneToMany(mappedBy = "reporter")
-    @JsonManagedReference("user-news")
     @Builder.Default
     private List<News> reportedNews = new ArrayList<>();
 
     // user can write many comment
     @OneToMany(mappedBy = "author")
     @Builder.Default
-    @JsonManagedReference("user-comment")
     private List<Comment> comments = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)

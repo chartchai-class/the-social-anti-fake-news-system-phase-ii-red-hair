@@ -22,7 +22,7 @@ public class UserDto {
     String email;
     String profileImage;
     List<UserNewsDto> reportedNews;
-    List<Comment> comments;
+    List<UserCommentDto> comments;
     List<Role> roles;
 }
 

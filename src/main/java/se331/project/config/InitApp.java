@@ -77,6 +77,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
         Comment comment3 = Comment.builder().news(news2).author(reader).content("Test comment03.").voteType("fake").commentDateTime(LocalDateTime.now().minusDays(1)).build();
         commentRepository.save(comment3);
+
+        Comment comment4 = Comment.builder().news(news1).author(member).content("Test comment04").voteType("not-fake").commentDateTime(LocalDateTime.now().minusHours(10)).build();
+        commentRepository.save(comment4);
+
     }
 
    // just to help calculate

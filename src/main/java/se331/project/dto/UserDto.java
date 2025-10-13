@@ -15,8 +15,9 @@ import java.util.List;
 // only have user data for not having loop
 public class UserDto {
     Long id;
-    String firstname;
-    String lastname;
+    String firstName;
+    String lastName;
+    String username;
     String email;
     String profileImage;
     List<Role> roles;

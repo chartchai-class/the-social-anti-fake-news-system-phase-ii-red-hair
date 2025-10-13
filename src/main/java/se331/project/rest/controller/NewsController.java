@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import se331.project.dto.NewsDto; // 1. import NewsDto เข้ามา
+import se331.project.dto.NewsDto;
 import se331.project.entity.News;
 import se331.project.service.NewsService;
 

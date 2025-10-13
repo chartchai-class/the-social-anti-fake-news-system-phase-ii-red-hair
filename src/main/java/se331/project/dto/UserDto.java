@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se331.project.entity.Role;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -12,6 +15,10 @@ import lombok.NoArgsConstructor;
 // only have user data for not having loop
 public class UserDto {
     Long id;
-    String firstname;
-    String lastname;
+    String firstName;
+    String lastName;
+    String username;
+    String email;
+    String profileImage;
+    List<Role> roles;
 }

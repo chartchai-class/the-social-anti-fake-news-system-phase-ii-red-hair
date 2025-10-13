@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import se331.project.dao.UserDao;
 import se331.project.entity.User;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -19,6 +20,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findById(Long id){
         return userDao.findById(id);
+    }
+
+    @Override
+    public List<User> findAllUsers(){
+        return userDao.findAllUsers();
     }
 
     @Override

@@ -26,6 +26,6 @@ public interface AMapper {
     List<CommentDto> getCommentDto(List<Comment> comments);
 
     //  mapper for user
-    UserDto getUserSimpleDto(User user);
-    List<UserDto> getUserSimpleDto(List<User> users);
+    UserDto getUserDto(User user);
+    List<UserDto> getUserDto(List<User> users);
 }

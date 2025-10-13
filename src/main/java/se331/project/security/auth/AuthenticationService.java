@@ -31,23 +31,33 @@ public class AuthenticationService {
   private final PasswordEncoder passwordEncoder;
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
+  private final UserRepository userRepository;
 
   public AuthenticationResponse register(RegisterRequest request) {
     User user = User.builder()
             .firstName(request.getFirstName())
             .lastName(request.getLastName())
+            .username(request.getUsername())
             .email(request.getEmail())
+            .profileImage(request.getProfileImage()) // i will let frontend send Dummy profile image. (dont know a good idea or not)
             .password(passwordEncoder.encode(request.getPassword()))
+            .enabled(true)
             .roles(List.of(Role.ROLE_READER))
             .build();
-    var savedUser = repository.save(user);
-    var jwtToken = jwtService.generateToken(user);
-    var refreshToken = jwtService.generateRefreshToken(user);
-    saveUserToken(savedUser, jwtToken);
-    return AuthenticationResponse.builder()
-        .accessToken(jwtToken)
-            .refreshToken(refreshToken)
-        .build();
+//    var savedUser = repository.save(user);
+//    var jwtToken = jwtService.generateToken(user);
+//    var refreshToken = jwtService.generateRefreshToken(user);
+//    saveUserToken(savedUser, jwtToken);
+//    return AuthenticationResponse.builder()
+//        .accessToken(jwtToken)
+//            .refreshToken(refreshToken)
+//        .build();
+    userRepository.save(user);
+    AuthenticationRequest authenticationRequest = new AuthenticationRequest(); // auto login after register
+    authenticationRequest.setUsername(request.getUsername());
+    authenticationRequest.setPassword(request.getPassword());
+    return authenticate(authenticationRequest);
+
   }
 
   public AuthenticationResponse authenticate(AuthenticationRequest request) {

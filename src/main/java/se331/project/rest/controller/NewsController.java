@@ -6,16 +6,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import se331.project.dto.NewsDto; // 1. import NewsDto เข้ามา
 import se331.project.entity.News;
 import se331.project.service.NewsService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.DeleteMapping;
+
 import java.time.LocalDateTime;
 
 @RestController
@@ -31,18 +27,24 @@ public class NewsController {
             @RequestParam(value = "search", required = false) String search,
             Pageable pageable // this is so op it automaticly collect pagination and sorting parameters for me
     ) {
-        Page<News> pageOutput = newsService.getNews(status, search, pageable);
+
+        Page<NewsDto> pageOutput = newsService.getNews(status, search, pageable);
+
         HttpHeaders headers = new HttpHeaders();
         headers.add("x-total-count", String.valueOf(pageOutput.getTotalElements()));
+
         return new ResponseEntity<>(pageOutput.getContent(), headers, HttpStatus.OK);
     }
+
     // use to pull one news by ID
     @GetMapping("/news/{id}")
     public ResponseEntity<?> getNewsById(@PathVariable("id") Long id) {
-        News news = newsService.getNewsById(id);
+        NewsDto news = newsService.getNewsById(id);
+
         if (news == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "News not found with id: " + id);
         }
+
         return ResponseEntity.ok(news);
     }
 

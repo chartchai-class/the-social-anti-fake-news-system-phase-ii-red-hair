@@ -39,12 +39,10 @@ public class News {
 
     // new can oly by one user
     @ManyToOne
-    @JsonBackReference("user-news") //stop loop
     private User reporter;
 
     // new have many comment
     @OneToMany(mappedBy = "news", cascade = CascadeType.ALL)
     @Builder.Default
-    @JsonManagedReference("news-comment")
     private List<Comment> comments = new ArrayList<>();
 }

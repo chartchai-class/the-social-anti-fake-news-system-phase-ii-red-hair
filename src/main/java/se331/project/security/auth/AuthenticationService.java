@@ -44,14 +44,7 @@ public class AuthenticationService {
             .enabled(true)
             .roles(List.of(Role.ROLE_READER))
             .build();
-//    var savedUser = repository.save(user);
-//    var jwtToken = jwtService.generateToken(user);
-//    var refreshToken = jwtService.generateRefreshToken(user);
-//    saveUserToken(savedUser, jwtToken);
-//    return AuthenticationResponse.builder()
-//        .accessToken(jwtToken)
-//            .refreshToken(refreshToken)
-//        .build();
+
     userRepository.save(user);
     AuthenticationRequest authenticationRequest = new AuthenticationRequest(); // auto login after register
     authenticationRequest.setUsername(request.getUsername());
@@ -77,7 +70,7 @@ public class AuthenticationService {
     return AuthenticationResponse.builder()
             .accessToken(jwtToken)
             .refreshToken(refreshToken)
-            .user(AMapper.INSTANCE.getUserDto(user))
+            .user(AMapper.INSTANCE.getUserAuthDto(user))
             .build();
   }
 

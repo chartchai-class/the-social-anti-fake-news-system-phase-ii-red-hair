@@ -4,6 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import se331.project.dto.CommentDto;
 import se331.project.dto.NewsDto;
+import se331.project.dto.UserAuthDto;
 import se331.project.dto.UserDto;
 import se331.project.entity.Comment;
 import se331.project.entity.News;
@@ -25,7 +26,9 @@ public interface AMapper {
     CommentDto getCommentDto(Comment comment);
     List<CommentDto> getCommentDto(List<Comment> comments);
 
+
     //  mapper for user
     UserDto getUserDto(User user);
     List<UserDto> getUserDto(List<User> users);
+    UserAuthDto getUserAuthDto(User user);
 }

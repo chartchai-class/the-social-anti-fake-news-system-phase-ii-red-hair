@@ -16,9 +16,10 @@ public class UserProfileDto {
     Long id;
     String firstName;
     String lastName;
-    String username;
+    String displayName;
     String email;
     String profileImage;
+    String phoneNumber;
     List<UserProfileNewsDto> reportedNews;
     List<UserProfileCommentDto> comments;
 }

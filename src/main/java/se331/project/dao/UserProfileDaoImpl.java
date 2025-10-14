@@ -24,9 +24,7 @@ public class UserProfileDaoImpl implements UserProfileDao {
     }
 
     @Override
-    public UserProfile findByUsername(String username) {
-        return userRepository.findByUsername(username).orElse(null);
-    }
+    public UserProfile findByDisplayName(String displayName) { return userRepository.findByDisplayName(displayName).orElse(null); }
 
     @Override
     public UserProfile findByEmail(String email) {

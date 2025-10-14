@@ -30,11 +30,9 @@ public class User implements UserDetails {
   @GeneratedValue
   private Integer id;
   private String parentId;
-  private String firstname;
-  private String lastname;
   @Column(unique = true)
-  private String username;
-  private String email;
+  private String username; //for login
+  // maybe I will add email later here to accept email login (or maybe not haha)
   private String password;
   private Boolean enabled;
 

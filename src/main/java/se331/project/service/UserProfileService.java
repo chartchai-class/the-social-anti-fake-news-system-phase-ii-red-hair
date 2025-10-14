@@ -7,14 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserProfileService {
-    Optional<UserProfile> findById(Long id);
-
     List<UserProfile> findAllUserProfiles();
-
-    @Transactional
-    UserProfile findByUsername(String username);
-
+    Optional<UserProfile> findById(Long id);
+    UserProfile findByDisplayName(String displayName);
     UserProfile findByEmail(String email);
-
     UserProfile save(UserProfile userProfile);
 }

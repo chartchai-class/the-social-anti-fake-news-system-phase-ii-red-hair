@@ -22,7 +22,4 @@ public class UserProfileNewsDto {
     Integer fakeCount;
     Integer notFakeCount;
     String voteType;
-
-    NewsDto news;   //maybe update to NewsUserDto later
-    CommentDto comment; //CommentUserDto
 }

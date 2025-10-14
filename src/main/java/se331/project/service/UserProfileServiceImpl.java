@@ -29,8 +29,8 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     @Transactional
-    public UserProfile findByUsername(String username) {
-        return userProfileDao.findByUsername(username);
+    public UserProfile findByDisplayName(String displayName) {
+        return userProfileDao.findByDisplayName(displayName);
     }
 
     @Override

@@ -22,6 +22,14 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
 
+supabase:
+  storage:
+    endpoint: https://pkpfakmiycauobjyogov.storage.supabase.co/storage/v1/s3
+    endpoint_output: https://pkpfakmiycauobjyogov.storage.supabase.co/storage/v1/object/public
+    bucket: redhair
+    region: ap-southeast-1
+    accessKey: 6d1828d0f5e3840270794a8ee176258d
+    secretKey: 8b015d5e1e4e0e86436d87282284ec6d20777a69e5bde4e40dd13c354829701f
 
 application:
   security:

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserNewsDto {
+public class UserProfileNewsDto {
     Long id;
     String title;
     String category;
@@ -22,7 +22,4 @@ public class UserNewsDto {
     Integer fakeCount;
     Integer notFakeCount;
     String voteType;
-
-    NewsDto news;   //maybe update to NewsUserDto later
-    CommentDto comment; //CommentUserDto
 }

@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import se331.project.entity.Comment;
-import se331.project.entity.News;
-import se331.project.entity.Role;
+import se331.project.security.user.Role;
 
 import java.util.List;
 
@@ -14,16 +12,16 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
+public class UserProfileDto {
     Long id;
     String firstName;
     String lastName;
-    String username;
+    String displayName;
     String email;
     String profileImage;
-    List<UserNewsDto> reportedNews;
-    List<UserCommentDto> comments;
-    List<Role> roles;
+    String phoneNumber;
+    List<UserProfileNewsDto> reportedNews;
+    List<UserProfileCommentDto> comments;
 }
 
 // intentionally left parentId, password, enabled, tokens here. I think they are kind of sensitive data that dont need to be shared.

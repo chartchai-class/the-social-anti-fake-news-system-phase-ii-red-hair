@@ -1,7 +1,5 @@
 package se331.project.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,7 +37,7 @@ public class News {
 
     // new can oly by one user
     @ManyToOne
-    private User reporter;
+    private UserProfile reporter;
 
     // new have many comment
     @OneToMany(mappedBy = "news", cascade = CascadeType.ALL)

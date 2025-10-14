@@ -1,14 +1,15 @@
 package se331.project.util;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import se331.project.dto.CommentDto;
 import se331.project.dto.NewsDto;
-import se331.project.dto.UserAuthDto;
-import se331.project.dto.UserDto;
+import se331.project.dto.UserProfileAuthDto;
+import se331.project.dto.UserProfileDto;
 import se331.project.entity.Comment;
 import se331.project.entity.News;
-import se331.project.entity.User;
+import se331.project.entity.UserProfile;
 
 import java.util.List;
 
@@ -28,7 +29,9 @@ public interface AMapper {
 
 
     //  mapper for user
-    UserDto getUserDto(User user);
-    List<UserDto> getUserDto(List<User> users);
-    UserAuthDto getUserAuthDto(User user);
+    UserProfileDto getUserProfileDto(UserProfile userProfile);
+    List<UserProfileDto> getUserProfileDto(List<UserProfile> userProfiles);
+
+    @Mapping(target = "roles", source = "user.roles")
+    UserProfileAuthDto getUserProfileAuthDto(UserProfile userProfile);
 }

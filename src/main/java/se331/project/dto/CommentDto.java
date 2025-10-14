@@ -16,5 +16,5 @@ public class CommentDto {
     String voteType;
     LocalDateTime commentDateTime;
     // change auther in enttity into userdto for not have news
-    UserDto author;
+    UserProfileDto author;
 }

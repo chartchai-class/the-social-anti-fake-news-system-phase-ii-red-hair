@@ -2,40 +2,40 @@ package se331.project.dao;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import se331.project.entity.User;
-import se331.project.repository.UserRepository;
+import se331.project.entity.UserProfile;
+import se331.project.repository.UserProfileRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class UserDaoImpl implements UserDao {
-    final UserRepository userRepository;
+public class UserProfileDaoImpl implements UserProfileDao {
+    final UserProfileRepository userRepository;
 
     @Override
-    public Optional<User> findById(Long id) {
+    public Optional<UserProfile> findById(Long id) {
         return userRepository.findById(id);
     }
 
     @Override
-    public List<User> findAllUsers() {
+    public List<UserProfile> findAllUserProfiles() {
         return userRepository.findAll();
     }
 
     @Override
-    public User findByUsername(String username) {
+    public UserProfile findByUsername(String username) {
         return userRepository.findByUsername(username).orElse(null);
     }
 
     @Override
-    public User findByEmail(String email) {
+    public UserProfile findByEmail(String email) {
         return userRepository.findByEmail(email).orElse(null);
     }
 
     @Override
-    public User save(User user) {
-        return userRepository.save(user);
+    public UserProfile save(UserProfile userProfile) {
+        return userRepository.save(userProfile);
     }
 
 }

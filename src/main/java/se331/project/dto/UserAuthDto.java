@@ -5,9 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import se331.project.entity.Role;
+import se331.project.security.user.Role;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data

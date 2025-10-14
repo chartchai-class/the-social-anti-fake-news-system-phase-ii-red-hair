@@ -1,4 +1,4 @@
-package se331.project.entity;
+package se331.project.security.user;
 
 public enum Role {
   // maybe ROLE_GUEST later

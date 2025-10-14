@@ -8,7 +8,7 @@ import se331.project.dto.UserAuthDto;
 import se331.project.dto.UserDto;
 import se331.project.entity.Comment;
 import se331.project.entity.News;
-import se331.project.entity.User;
+import se331.project.entity.UserProfile;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public interface AMapper {
 
 
     //  mapper for user
-    UserDto getUserDto(User user);
-    List<UserDto> getUserDto(List<User> users);
-    UserAuthDto getUserAuthDto(User user);
+    UserDto getUserDto(UserProfile userProfile);
+    List<UserDto> getUserDto(List<UserProfile> userProfiles);
+    UserAuthDto getUserAuthDto(UserProfile userProfile);
 }

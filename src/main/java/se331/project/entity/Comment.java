@@ -1,7 +1,5 @@
 package se331.project.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,5 +31,5 @@ public class Comment {
 
     // comment can have one user
     @ManyToOne
-    private User author;
+    private UserProfile author;
 }

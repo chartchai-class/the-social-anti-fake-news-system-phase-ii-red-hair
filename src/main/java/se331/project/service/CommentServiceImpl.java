@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import se331.project.dto.CommentDto;
 import se331.project.entity.Comment;
 import se331.project.entity.News;
+import se331.project.entity.UserProfile;
 import se331.project.repository.CommentRepository;
 import se331.project.repository.NewsRepository;
 import se331.project.repository.UserRepository;
-import se331.project.entity.User;
 import se331.project.util.AMapper;
 import java.time.LocalDateTime;
 
@@ -27,7 +27,7 @@ public class CommentServiceImpl implements CommentService {
     public CommentDto save(Long newsId, Long authorId, Comment comment) {
         //find id comment
         News relatedNews = newsRepository.findById(newsId).orElse(null);
-        User author = userRepository.findById(authorId).orElse(null);
+        UserProfile author = userRepository.findById(authorId).orElse(null);
 
         if (relatedNews == null || author == null) {
             return null;

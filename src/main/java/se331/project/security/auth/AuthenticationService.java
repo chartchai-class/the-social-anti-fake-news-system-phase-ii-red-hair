@@ -15,8 +15,8 @@ import se331.project.security.config.JwtService;
 import se331.project.security.token.Token;
 import se331.project.security.token.TokenRepository;
 import se331.project.security.token.TokenType;
-import se331.project.entity.Role;
-import se331.project.entity.User;
+import se331.project.security.user.Role;
+import se331.project.security.user.User;
 import se331.project.repository.UserRepository;
 import se331.project.util.AMapper;
 

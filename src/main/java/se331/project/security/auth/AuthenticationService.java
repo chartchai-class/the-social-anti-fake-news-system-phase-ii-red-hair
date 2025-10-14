@@ -11,6 +11,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import se331.project.entity.UserProfile;
+import se331.project.repository.UserProfileRepository;
 import se331.project.security.config.JwtService;
 import se331.project.security.token.Token;
 import se331.project.security.token.TokenRepository;
@@ -32,19 +34,35 @@ public class AuthenticationService {
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
   private final UserRepository userRepository;
+  private final UserProfileRepository userProfileRepository;
 
   public AuthenticationResponse register(RegisterRequest request) {
     User user = User.builder()
-            .firstname(request.getFirstName())
-            .lastname(request.getLastName())
             .username(request.getUsername())
-            .email(request.getEmail())
             .password(passwordEncoder.encode(request.getPassword()))
             .enabled(true)
             .roles(List.of(Role.ROLE_READER))
             .build();
 
+    UserProfile userProfile = UserProfile.builder()
+            .firstName(request.getFirstName())
+            .lastName(request.getLastName())
+            .email(request.getEmail())
+            .displayName(request.getUsername())
+            .profileImage(request.getProfileImage())
+            .phoneNumber(request.getPhoneNumber())
+            .build();
+
+    // This should come first before setUserProfile and setUser. Persistence instance can't save transient instance. (lesson learned :")
+    // Or else, you will see a message like "persistent instance references an unsaved transient instance (save the transient instance before flushing)"
     userRepository.save(user);
+    userProfileRepository.save(userProfile);
+
+    user.setUserProfile(userProfile); // Don't forget to add this. seems like my entity relationship sucks.
+    userProfile.setUser(user);
+
+    // Lesson learned: I should have sleep earlier.
+
     AuthenticationRequest authenticationRequest = new AuthenticationRequest(); // auto login after register
     authenticationRequest.setUsername(request.getUsername());
     authenticationRequest.setPassword(request.getPassword());

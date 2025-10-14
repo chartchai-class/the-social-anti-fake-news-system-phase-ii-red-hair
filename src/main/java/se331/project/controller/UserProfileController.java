@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import se331.project.entity.UserProfile;
-import se331.project.security.user.Role;
 import se331.project.service.UserProfileService;
 import se331.project.util.AMapper;
 
@@ -24,7 +23,7 @@ public class UserProfileController {
         //maybe add pagination later
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("x-total-count", String.valueOf(userProfiles.size()));
-        return new ResponseEntity<>(AMapper.INSTANCE.getUserDto(userProfiles), responseHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(AMapper.INSTANCE.getUserProfileDto(userProfiles), responseHeaders, HttpStatus.OK);
     }
 
     @GetMapping("/profiles/{id}")
@@ -34,7 +33,7 @@ public class UserProfileController {
         if(userProfile == null){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         }
-        return new ResponseEntity<>(AMapper.INSTANCE.getUserDto(userProfile), HttpStatus.OK);
+        return new ResponseEntity<>(AMapper.INSTANCE.getUserProfileDto(userProfile), HttpStatus.OK);
     }
 
     // WILL EDIT IN LATER COMMITS

@@ -29,8 +29,8 @@ public interface AMapper {
 
 
     //  mapper for user
-    UserProfileDto getUserDto(UserProfile userProfile);
-    List<UserProfileDto> getUserDto(List<UserProfile> userProfiles);
+    UserProfileDto getUserProfileDto(UserProfile userProfile);
+    List<UserProfileDto> getUserProfileDto(List<UserProfile> userProfiles);
 
     @Mapping(target = "roles", source = "user.roles")
     UserProfileAuthDto getUserProfileAuthDto(UserProfile userProfile);

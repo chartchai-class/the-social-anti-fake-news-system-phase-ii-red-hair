@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UserProfileAuthDto {
     Long id;
-    String username;
+    String displayName;
     String profileImage;
     List<Role> roles;
 }

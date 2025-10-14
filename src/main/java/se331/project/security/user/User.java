@@ -10,6 +10,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import se331.project.entity.UserProfile;
 import se331.project.security.token.Token;
 
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class User implements UserDetails {
   private List<Token> tokens;
 
   @OneToOne(mappedBy = "user")
-//  Organizer organizer;
+  private UserProfile  userProfile;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -10,10 +10,11 @@ import org.springframework.stereotype.Component;
 import se331.project.entity.Comment;
 import se331.project.entity.News;
 import se331.project.entity.UserProfile;
+import se331.project.repository.UserProfileRepository;
 import se331.project.security.user.Role;
 import se331.project.repository.CommentRepository;
 import se331.project.repository.NewsRepository;
-import se331.project.repository.UserRepository;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
-    final UserRepository userRepository;
+    final UserProfileRepository userProfileRepository;
     final NewsRepository newsRepository;
     final CommentRepository commentRepository;
 
@@ -33,14 +34,14 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
 
         // user that have differrent role ** idk we should have profile image?
-        UserProfile admin = UserProfile.builder().username("admin").firstName("Admin").lastName("User").email("admin@test.com").password(encoder.encode("password")).roles(List.of(Role.ROLE_ADMIN)).enabled(true).profileImage("https://i.pravatar.cc/150?u=admin").build();
-        userRepository.save(admin);
+        UserProfile admin = UserProfile.builder().username("admin").firstName("Admin").lastName("User").email("admin@test.com").profileImage("https://i.pravatar.cc/150?u=admin").build();
+        userProfileRepository.save(admin);
 
-        UserProfile member = UserProfile.builder().username("member").firstName("Member").lastName("User").email("member@test.com").password(encoder.encode("password")).roles(List.of(Role.ROLE_MEMBER)).enabled(true).profileImage("https://i.pravatar.cc/150?u=member").build();
-        userRepository.save(member);
+        UserProfile member = UserProfile.builder().username("member").firstName("Member").lastName("User").email("member@test.com").profileImage("https://i.pravatar.cc/150?u=member").build();
+        userProfileRepository.save(member);
 
-        UserProfile reader = UserProfile.builder().username("reader").firstName("Reader").lastName("User").email("reader@test.com").password(encoder.encode("password")).roles(List.of(Role.ROLE_READER)).enabled(true).profileImage("https://i.pravatar.cc/150?u=reader").build();
-        userRepository.save(reader);
+        UserProfile reader = UserProfile.builder().username("reader").firstName("Reader").lastName("User").email("reader@test.com").profileImage("https://i.pravatar.cc/150?u=reader").build();
+        userProfileRepository.save(reader);
 
 
         // News by member

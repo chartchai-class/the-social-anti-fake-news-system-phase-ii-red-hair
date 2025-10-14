@@ -12,6 +12,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import se331.project.security.token.Token;
 import se331.project.security.user.Role;
+import se331.project.security.user.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -45,5 +46,6 @@ public class UserProfile {
     @Builder.Default
     private List<Comment> comments = new ArrayList<>();
 
-    // link to security user later
+    @OneToOne
+    User user;
 }

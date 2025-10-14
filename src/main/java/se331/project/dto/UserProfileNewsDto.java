@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserNewsDto {
+public class UserProfileNewsDto {
     Long id;
     String title;
     String category;

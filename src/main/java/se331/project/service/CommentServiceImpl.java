@@ -9,7 +9,7 @@ import se331.project.entity.News;
 import se331.project.entity.UserProfile;
 import se331.project.repository.CommentRepository;
 import se331.project.repository.NewsRepository;
-import se331.project.repository.UserRepository;
+import se331.project.repository.UserProfileRepository;
 import se331.project.util.AMapper;
 import java.time.LocalDateTime;
 
@@ -19,7 +19,7 @@ public class CommentServiceImpl implements CommentService {
 
     final CommentRepository commentRepository;
     final NewsRepository newsRepository;
-    final UserRepository userRepository;
+    final UserProfileRepository userProfileRepository;
 
     @Override
     @Transactional
@@ -27,7 +27,7 @@ public class CommentServiceImpl implements CommentService {
     public CommentDto save(Long newsId, Long authorId, Comment comment) {
         //find id comment
         News relatedNews = newsRepository.findById(newsId).orElse(null);
-        UserProfile author = userRepository.findById(authorId).orElse(null);
+        UserProfile author = userProfileRepository.findById(authorId).orElse(null);
 
         if (relatedNews == null || author == null) {
             return null;

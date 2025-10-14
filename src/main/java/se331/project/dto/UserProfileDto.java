@@ -12,16 +12,15 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
+public class UserProfileDto {
     Long id;
     String firstName;
     String lastName;
     String username;
     String email;
     String profileImage;
-    List<UserNewsDto> reportedNews;
-    List<UserCommentDto> comments;
-    List<Role> roles;
+    List<UserProfileNewsDto> reportedNews;
+    List<UserProfileCommentDto> comments;
 }
 
 // intentionally left parentId, password, enabled, tokens here. I think they are kind of sensitive data that dont need to be shared.

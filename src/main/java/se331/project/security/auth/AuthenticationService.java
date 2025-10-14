@@ -17,7 +17,7 @@ import se331.project.security.token.TokenRepository;
 import se331.project.security.token.TokenType;
 import se331.project.security.user.Role;
 import se331.project.security.user.User;
-import se331.project.repository.UserRepository;
+import se331.project.security.user.UserRepository;
 import se331.project.util.AMapper;
 
 import java.io.IOException;
@@ -35,11 +35,10 @@ public class AuthenticationService {
 
   public AuthenticationResponse register(RegisterRequest request) {
     User user = User.builder()
-            .firstName(request.getFirstName())
-            .lastName(request.getLastName())
+            .firstname(request.getFirstName())
+            .lastname(request.getLastName())
             .username(request.getUsername())
             .email(request.getEmail())
-            .profileImage(request.getProfileImage()) // i will let frontend send Dummy profile image. (dont know a good idea or not)
             .password(passwordEncoder.encode(request.getPassword()))
             .enabled(true)
             .roles(List.of(Role.ROLE_READER))
@@ -70,7 +69,7 @@ public class AuthenticationService {
     return AuthenticationResponse.builder()
             .accessToken(jwtToken)
             .refreshToken(refreshToken)
-            .user(AMapper.INSTANCE.getUserAuthDto(user))
+            .user(AMapper.INSTANCE.getUserProfileAuthDto(user.getUserProfile()))
             .build();
   }
 

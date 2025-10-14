@@ -1,19 +1,21 @@
 package se331.project.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se331.project.security.user.Role;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserCommentDto {
+public class UserProfileAuthDto {
     Long id;
-    String content;
-    String voteType;
-    LocalDateTime commentDateTime;
+    String username;
+    String profileImage;
+    List<Role> roles;
 }

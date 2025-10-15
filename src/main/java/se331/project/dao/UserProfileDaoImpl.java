@@ -1,6 +1,8 @@
 package se331.project.dao;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import se331.project.entity.UserProfile;
 import se331.project.repository.UserProfileRepository;
@@ -14,14 +16,15 @@ public class UserProfileDaoImpl implements UserProfileDao {
     final UserProfileRepository userRepository;
 
     @Override
+    public Integer getUserProfileSize() { return Math.toIntExact(userRepository.count()); }
+
+    @Override
     public Optional<UserProfile> findById(Long id) {
         return userRepository.findById(id);
     }
 
     @Override
-    public List<UserProfile> findAllUserProfiles() {
-        return userRepository.findAll();
-    }
+    public Page<UserProfile> getAllUserProfiles(Pageable pageable) { return userRepository.findAll(pageable); }
 
     @Override
     public UserProfile findByDisplayName(String displayName) { return userRepository.findByDisplayName(displayName).orElse(null); }

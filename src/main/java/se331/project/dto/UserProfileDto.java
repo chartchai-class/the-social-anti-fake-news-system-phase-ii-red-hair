@@ -18,6 +18,7 @@ public class UserProfileDto {
     String firstName;
     String lastName;
     String displayName;
+    String username; // Dont reference this for other Dto
     String email;
     String profileImage;
     String phoneNumber;

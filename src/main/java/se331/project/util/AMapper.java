@@ -29,6 +29,7 @@ public interface AMapper {
 
 
     //  mapper for user
+    @Mapping(target = "roles", source = "user.roles")
     UserProfileDto getUserProfileDto(UserProfile userProfile);
     List<UserProfileDto> getUserProfileDto(List<UserProfile> userProfiles);
 

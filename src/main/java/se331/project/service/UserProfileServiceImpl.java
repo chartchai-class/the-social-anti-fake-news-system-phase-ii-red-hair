@@ -3,6 +3,8 @@ package se331.project.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import se331.project.dao.UserProfileDao;
 import se331.project.entity.UserProfile;
@@ -18,14 +20,15 @@ public class UserProfileServiceImpl implements UserProfileService {
     final UserProfileDao userProfileDao;
 
     @Override
+    public Integer getUserProfileSize() { return userProfileDao.getUserProfileSize(); }
+
+    @Override
     public Optional<UserProfile> findById(Long id){
         return userProfileDao.findById(id);
     }
 
     @Override
-    public List<UserProfile> findAllUserProfiles(){
-        return userProfileDao.findAllUserProfiles();
-    }
+    public Page<UserProfile> getAllUserProfiles(Pageable  pageable){ return userProfileDao.getAllUserProfiles(pageable); }
 
     @Override
     @Transactional

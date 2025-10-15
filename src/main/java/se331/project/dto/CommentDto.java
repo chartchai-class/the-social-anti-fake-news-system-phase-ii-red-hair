@@ -17,4 +17,5 @@ public class CommentDto {
     LocalDateTime commentDateTime;
     // change auther in enttity into userdto for not have news
     UserProfileDto author;
+    // 👆🏻reference to only UserProfile values when creating CommentUserProfileDto, UserProfileDto is only for user manage side.
 }

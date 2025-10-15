@@ -1,13 +1,14 @@
 package se331.project.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-import se331.project.dto.UserProfileDto;
 import se331.project.entity.UserProfile;
 import se331.project.repository.UserProfileRepository;
 import se331.project.security.user.Role;
@@ -28,12 +29,18 @@ public class UserProfileController {
     // for Admin access
     //get all profiles
     @GetMapping("/users/profiles")
-    public ResponseEntity<?> getUsers(){
-        List<UserProfile> userProfiles = userProfileService.findAllUserProfiles();
+    public ResponseEntity<?> getUsers(@RequestParam(value = "_limit", required = false) Integer perPage,
+                                      @RequestParam(value = "_page", required = false) Integer pageNumber){
+
+        perPage = (perPage == null) ? userProfileService.getUserProfileSize() : perPage;
+        pageNumber = (pageNumber == null) ? 1 : pageNumber;
+        Pageable pageable = PageRequest.of(pageNumber-1, perPage);
+
+        Page<UserProfile> userProfiles = userProfileRepository.findAll(pageable);
 
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("x-total-count", String.valueOf(userProfiles.size()));
-        return new ResponseEntity<>(AMapper.INSTANCE.getUserProfileDto(userProfiles), responseHeaders, HttpStatus.OK);
+        responseHeaders.set("x-total-count", String.valueOf(userProfiles.getTotalElements()));
+        return new ResponseEntity<>(AMapper.INSTANCE.getUserProfileDto(userProfiles.getContent()), responseHeaders, HttpStatus.OK);
     }
 
     //get single profile by id

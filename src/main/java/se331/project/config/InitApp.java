@@ -72,16 +72,42 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         newsRepository.save(news6);
 
         //comment by role
-        Comment comment1 = Comment.builder().news(news1).author(readerProfile1).content("Test comment01").voteType("not-fake").commentDateTime(LocalDateTime.now().minusHours(10)).build();
+        Comment comment1 = Comment.builder()
+                .news(news1)
+                .author(readerProfile1)
+                .content("test word test word test word test word test word test word test word test word test word")
+                .image("https://images.unsplash.com/photo-1582572288450-e2d17c7a5f3a")
+                .voteType("not-fake")
+                .commentDateTime(LocalDateTime.now().minusHours(10))
+                .build();
         commentRepository.save(comment1);
 
-        Comment comment2 = Comment.builder().news(news1).author(readerProfile1).content(" Test comment02.").voteType("not-fake").commentDateTime(LocalDateTime.now().minusHours(9)).build();
+        Comment comment2 = Comment.builder()
+                .news(news1)
+                .author(readerProfile1)
+                .content(" Test comment02.")
+                .image("https://images.unsplash.com/photo-1511920183353-3c2c5d7d549b")
+                .voteType("not-fake")
+                .commentDateTime(LocalDateTime.now().minusHours(9))
+                .build();
         commentRepository.save(comment2);
 
-        Comment comment3 = Comment.builder().news(news2).author(readerProfile1).content("Test comment03.").voteType("fake").commentDateTime(LocalDateTime.now().minusDays(1)).build();
+        Comment comment3 = Comment.builder()
+                .news(news2)
+                .author(readerProfile1)
+                .content("Test comment03.")
+                .voteType("fake")
+                .commentDateTime(LocalDateTime.now().minusDays(1))
+                .build();
         commentRepository.save(comment3);
 
-        Comment comment4 = Comment.builder().news(news1).author(readerProfile1).content("Test comment04").voteType("not-fake").commentDateTime(LocalDateTime.now().minusHours(10)).build();
+        Comment comment4 = Comment.builder()
+                .news(news1)
+                .author(readerProfile1)
+                .content("Test comment04")
+                .voteType("not-fake")
+                .commentDateTime(LocalDateTime.now().minusHours(10))
+                .build();
         commentRepository.save(comment4);
 
 

@@ -11,6 +11,9 @@ import se331.project.entity.Comment;
 import se331.project.entity.News;
 import se331.project.entity.UserProfile;
 
+import se331.project.dto.UserProfileNewsDto;
+
+
 import java.util.List;
 
 @Mapper
@@ -19,13 +22,20 @@ public interface AMapper {
 
 
     // mapper for news part
+    @Mapping(target = "reporter", source = "reporter.user.username")
     NewsDto getNewsDto(News news);
     List<NewsDto> getNewsDto(List<News> news);
 
 
     // a mapper for comment
+    @Mapping(target = "author", source = "author.user.username")
+    @Mapping(target = "image", source = "image")
     CommentDto getCommentDto(Comment comment);
     List<CommentDto> getCommentDto(List<Comment> comments);
+
+    // idk this will fix
+    UserProfileNewsDto getUserProfileNewsDto(News news);
+    List<UserProfileNewsDto> getUserProfileNewsDto(List<News> news);
 
 
     //  mapper for user

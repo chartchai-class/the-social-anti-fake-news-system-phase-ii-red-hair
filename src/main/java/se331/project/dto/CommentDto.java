@@ -15,7 +15,8 @@ public class CommentDto {
     String content;
     String voteType;
     LocalDateTime commentDateTime;
+    String image;
     // change auther in enttity into userdto for not have news
-    UserProfileDto author;
+    String author;
     // 👆🏻reference to only UserProfile values when creating CommentUserProfileDto, UserProfileDto is only for user manage side.
 }

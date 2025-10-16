@@ -19,11 +19,14 @@ public interface AMapper {
 
 
     // mapper for news part
+    @Mapping(target = "reporter", source = "reporter.user.username")
     NewsDto getNewsDto(News news);
     List<NewsDto> getNewsDto(List<News> news);
 
 
     // a mapper for comment
+    @Mapping(target = "author", source = "author.user.username")
+    @Mapping(target = "image", source = "image")
     CommentDto getCommentDto(Comment comment);
     List<CommentDto> getCommentDto(List<Comment> comments);
 

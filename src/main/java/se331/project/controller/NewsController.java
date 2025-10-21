@@ -22,13 +22,14 @@ public class NewsController {
     // use to pull data in pagination and can filrer or serach
     @GetMapping("/news")
     public ResponseEntity<?> getNews(
-            // use to make spring pull query paramiter  url in to status
             @RequestParam(value = "status", required = false) String status,
+            @RequestParam(value = "searchBy", required = false) String searchBy, // <-- เพิ่มตัวนี้
             @RequestParam(value = "search", required = false) String search,
-            Pageable pageable // this is so op it automaticly collect pagination and sorting parameters for me
+            Pageable pageable
     ) {
 
-        Page<NewsDto> pageOutput = newsService.getNews(status, search, pageable);
+        // send parmiter to service
+        Page<NewsDto> pageOutput = newsService.getNews(status, searchBy, search, pageable);
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("x-total-count", String.valueOf(pageOutput.getTotalElements()));

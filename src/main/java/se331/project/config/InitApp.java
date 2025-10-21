@@ -35,6 +35,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Transactional
     public void onApplicationEvent(ApplicationReadyEvent event) {
 
+
         addUser();
         addUserProfile();
 
@@ -46,7 +47,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         memberProfile1.setUser(member1);
         readerProfile1.setUser(reader1);
 
-        // News by member
+
+
+
         News news1 = News.builder().title("member news01").category("Technology").reporter(memberProfile1).newsDateTime(LocalDateTime.now().minusDays(1)).description("A new study reveals that cats are officially the supreme rulers of all online content.").content("In a landmark study, researchers have concluded that the internet is a sophisticated system for sharing cat pictures.").image("https://placekitten.com/800/400").fakeCount(10).notFakeCount(150).build();
         news1.setVoteType(calculateVoteType(news1));
         newsRepository.save(news1);
@@ -71,7 +74,53 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         news6.setVoteType(calculateVoteType(news6));
         newsRepository.save(news6);
 
-        //comment by role
+
+
+        // News by admin (adminProfile1)
+        News news7 = News.builder()
+                .title("admin news01 - Policy Change")
+                .category("Politics")
+                .reporter(adminProfile1)
+                .newsDateTime(LocalDateTime.now().minusDays(1))
+                .description("A new policy regarding internet usage has been announced by admin.")
+                .content("Full details of the policy are available on the government website.")
+                .image("https://images.unsplash.com/photo-1504711434969-e33886168f5c")
+                .fakeCount(5)
+                .notFakeCount(100)
+                .build();
+        news7.setVoteType(calculateVoteType(news7));
+        newsRepository.save(news7);
+
+        News news8 = News.builder()
+                .title("admin news02 - Security Breach")
+                .category("Security")
+                .reporter(adminProfile1)
+                .newsDateTime(LocalDateTime.now().minusDays(3))
+                .description("A major security breach is reportedly fake, says admin.")
+                .content("Sources claim the 'breach' was just a test.")
+                .image("https://images.unsplash.com/photo-1570172619642-13c72b8d3f38")
+                .fakeCount(300)
+                .notFakeCount(10)
+                .build();
+        news8.setVoteType(calculateVoteType(news8));
+        newsRepository.save(news8);
+
+        News news9 = News.builder()
+                .title("admin news03 - Local Festival")
+                .category("Local News")
+                .reporter(adminProfile1)
+                .newsDateTime(LocalDateTime.now().minusDays(5))
+                .description("The annual flower festival has been confirmed by admin.")
+                .content("The event will take place next weekend.")
+                .image("https://images.unsplash.com/photo-1518621736915-f3b17a1d02da")
+                .fakeCount(1)
+                .notFakeCount(50)
+                .build();
+        news9.setVoteType(calculateVoteType(news9));
+        newsRepository.save(news9);
+
+
+
         Comment comment1 = Comment.builder()
                 .news(news1)
                 .author(readerProfile1)
@@ -115,7 +164,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     }
 
 
-    //define users here (not profile yet, sry my naming seems confusing, User is only for security layer, and UserProfile is for business layer)
     User admin1, member1, reader1;
     private void addUser(){
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -178,7 +226,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     }
 
 
-   // just to help calculate
+    // just to help calculate
     private String calculateVoteType(News news) {
         if (news.getFakeCount() > news.getNotFakeCount()) {
             return "fake";

@@ -16,17 +16,61 @@ public class NewsDaoImpl implements NewsDao {
     public Page<News> getNews(Pageable pageRequest) {
         return newsRepository.findAll(pageRequest);
     }
-
-    // method Filter
+    // this part so hard i use help form other
+    // this is method for implement logic all
     @Override
-    public Page<News> getNews(String status, Pageable pageable) {
-        return newsRepository.findByVoteType(status, pageable);
+    public Page<News> getNews(String status, String searchBy, String search, Pageable pageable) {
+
+        // check filter 'status' or not
+        boolean hasStatusFilter = status != null && !status.isEmpty() && !status.equalsIgnoreCase("all");
+
+        // check filter 'search' or not
+        boolean hasSearchFilter = searchBy != null && !searchBy.isEmpty() && search != null && !search.isEmpty();
+
+        // logic for choose repository method
+
+        // Case 1 Double Filter
+        if (hasStatusFilter && hasSearchFilter) {
+            switch (searchBy.toLowerCase()) {
+                case "title":
+                    return newsRepository.findByVoteTypeAndTitleContainingIgnoreCase(status, search, pageable);
+                case "description":
+                    return newsRepository.findByVoteTypeAndDescriptionContainingIgnoreCase(status, search, pageable);
+                case "reporter":
+                    return newsRepository.findByVoteTypeAndReporter_User_UsernameContainingIgnoreCase(status, search, pageable);
+                default:
+                    return newsRepository.findByVoteType(status, pageable);
+            }
+        }
+
+        // Case 2 filter SearchBy
+        else if (hasSearchFilter) {
+            switch (searchBy.toLowerCase()) {
+                case "title":
+                    return newsRepository.findByTitleContainingIgnoreCase(search, pageable);
+                case "description":
+                    return newsRepository.findByDescriptionContainingIgnoreCase(search, pageable);
+                case "reporter":
+                    return newsRepository.findByReporter_User_UsernameContainingIgnoreCase(search, pageable);
+                default:
+                    return newsRepository.findAll(pageable);
+            }
+        }
+
+        // Case 3: only Status
+        else if (hasStatusFilter) {
+            return newsRepository.findByVoteType(status, pageable);
+        }
+
+        // Case 4: no filter
+        else {
+            return newsRepository.findAll(pageable);
+        }
     }
 
-    // mentos for Search
-    @Override
-    public Page<News> getNews(String title, String description, Pageable pageable) {
-        return newsRepository.findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCase(title, description, pageable);
-    }
+
+
+
+
 
 }

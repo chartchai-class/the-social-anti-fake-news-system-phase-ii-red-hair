@@ -17,23 +17,10 @@ public class NewsServiceImpl implements NewsService {
     final NewsRepository newsRepository;
 
     @Override
-    public Page<NewsDto> getNews(String status, String search, Pageable pageable) {
-        // check if it have serch value send or not
-        Page<News> newsPage;
+    public Page<NewsDto> getNews(String status, String searchBy, String search, Pageable pageable) {
 
-        if (search != null && !search.isEmpty()) {
-            newsPage = newsDao.getNews(search, search, pageable);
-        }
-
-        // if dont have serch value check if it have votetype or not
-        else if (status != null && !status.isEmpty()) {
-            newsPage = newsDao.getNews(status, pageable);
-        }
-
-        // if no search or votetype it will get all data
-        else {
-            newsPage = newsDao.getNews(pageable);
-        }
+        // logic will be in dao
+        Page<News> newsPage = newsDao.getNews(status, searchBy, search, pageable);
 
         //convert data with mapstruct before sending it back
         return newsPage.map(AMapper.INSTANCE::getNewsDto);

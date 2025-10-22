@@ -6,5 +6,6 @@ import se331.project.dto.CommentDto;
 public interface CommentService {
     CommentDto save(Long newsId, Long authorId, Comment comment);
     void deleteById(Long id);
+    void updateIsDeleted(Long id, Boolean isDeleted);
 
 }

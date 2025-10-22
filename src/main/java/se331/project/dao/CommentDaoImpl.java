@@ -1,5 +1,6 @@
 package se331.project.dao;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import se331.project.entity.Comment;
@@ -11,6 +12,21 @@ public class CommentDaoImpl implements CommentDao {
     final CommentRepository commentRepository;
     @Override
     public Comment save(Comment comment) {
+        return commentRepository.save(comment);
+    }
+
+    @Override
+    public Comment updateIsDeleted(Long id, Boolean isDeleted) {
+        Comment comment = commentRepository.findById(id).orElse(null);
+        if (comment == null){
+            throw new EntityNotFoundException("comment not found");
+        }
+        if(isDeleted == null){
+            throw new EntityNotFoundException("isDeleted must not be null");
+        }
+        if(comment.getIsDeleted() == isDeleted){ return comment; };
+
+        comment.setIsDeleted(isDeleted);
         return commentRepository.save(comment);
     }
 }

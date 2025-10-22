@@ -4,4 +4,5 @@ import se331.project.entity.Comment;
 
 public interface CommentDao {
     Comment save(Comment comment);
+    Comment updateIsDeleted(Long id, Boolean isDeleted);
 }

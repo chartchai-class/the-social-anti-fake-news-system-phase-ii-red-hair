@@ -39,4 +39,12 @@ public class CommentController {
         //204
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/comments/{id}/toggle-delete")
+    public ResponseEntity<?> toggleDeleteComment(@PathVariable("id") Long id, @RequestBody Comment comment) {
+        if (comment.getIsDeleted() == null) {return ResponseEntity.badRequest().build();}
+        Boolean commentIsDeleted = comment.getIsDeleted();
+        commentService.updateIsDeleted(id, commentIsDeleted);
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -47,9 +47,11 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.PUT,"/users/profiles/{id}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"/uploadImage").permitAll()
                         .requestMatchers(HttpMethod.GET,"/news").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/news").hasAnyRole("ADMIN", "MEMBER")
                         .requestMatchers(HttpMethod.GET,"/admin/news").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET,"/news/{id}").permitAll()
                         .requestMatchers(HttpMethod.POST,"/news/{id}/toggle-delete").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST,"/comments/{id}/toggle-delete").hasRole("ADMIN")
                         .anyRequest().authenticated();
             })
 

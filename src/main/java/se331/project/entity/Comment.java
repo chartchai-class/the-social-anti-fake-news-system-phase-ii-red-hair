@@ -24,6 +24,8 @@ public class Comment {
     private String image;
     private String voteType;
     private LocalDateTime commentDateTime;
+    @Builder.Default
+    private Boolean isDeleted = Boolean.FALSE;
 
     // this comment will belong to new
     @ManyToOne

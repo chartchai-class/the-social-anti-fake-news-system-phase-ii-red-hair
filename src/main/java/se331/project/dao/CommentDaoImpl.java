@@ -2,6 +2,8 @@ package se331.project.dao;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import se331.project.entity.Comment;
 import se331.project.repository.CommentRepository;
@@ -28,5 +30,17 @@ public class CommentDaoImpl implements CommentDao {
 
         comment.setIsDeleted(isDeleted);
         return commentRepository.save(comment);
+    }
+
+    // for non-admin users
+    @Override
+    public Page<Comment> getCommentsByNewsId(Long newsId, Pageable pageRequest){
+        return commentRepository.findByNews_IdAndIsDeletedFalse(newsId,pageRequest);
+    }
+
+    // for admin
+    @Override
+    public Page<Comment> getCommentsByNewsIdByAdmin(Long newsId, Pageable pageRequest) {
+        return commentRepository.findByNews_Id(newsId, pageRequest);
     }
 }

@@ -52,6 +52,8 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.GET,"/news/{id}").permitAll()
                         .requestMatchers(HttpMethod.POST,"/news/{id}/toggle-delete").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"/comments/{id}/toggle-delete").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET,"/news/{id}/comments").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/admin/news/{id}/comments").hasRole("ADMIN")
                         .anyRequest().authenticated();
             })
 

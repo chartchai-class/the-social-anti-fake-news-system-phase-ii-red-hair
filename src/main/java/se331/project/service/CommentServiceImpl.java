@@ -2,6 +2,8 @@ package se331.project.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import se331.project.dao.CommentDao;
 import se331.project.dto.CommentDto;
@@ -121,6 +123,23 @@ public class CommentServiceImpl implements CommentService {
         commentDao.updateIsDeleted(id, isDeleted);
     }
 
+    // non-admin users can get only visible comments
+    @Override
+    public Page<CommentDto> getCommentsByNewsId(Long newsId,Pageable pageRequest){
+        Page<Comment> commentPage = commentDao.getCommentsByNewsId(newsId, pageRequest);
+
+        return commentPage.map(comment -> AMapper.INSTANCE.getCommentDto(comment));
+    }
+
+    // admin gets all comments including deleted
+    @Override
+    public Page<CommentDto> getCommentsByNewsIdByAdmin(Long newsId, Pageable pageRequest) {
+        Page<Comment> commentPage = commentDao.getCommentsByNewsIdByAdmin(newsId, pageRequest);
+
+        return commentPage.map(comment -> AMapper.INSTANCE.getCommentDto(comment));
+    }
+
+    //helper
     private String computeVoteTypeForNews(News news){
         return news.getFakeCount()>news.getNotFakeCount()?"fake":"not-fake";
     }

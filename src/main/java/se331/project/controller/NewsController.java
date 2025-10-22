@@ -21,6 +21,7 @@ public class NewsController {
     final NewsService newsService;
 
     // use to pull data in pagination and can filrer or serach
+    // this will be used by non-admin
     @GetMapping("/news")
     public ResponseEntity<?> getNews(
             @RequestParam(value = "status", required = false) String status,
@@ -31,6 +32,23 @@ public class NewsController {
 
         // send parmiter to service
         Page<NewsDto> pageOutput = newsService.getNews(status, searchBy, search, pageable);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("x-total-count", String.valueOf(pageOutput.getTotalElements()));
+
+        return new ResponseEntity<>(pageOutput.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/admin/news")
+    public ResponseEntity<?> getNewsByAdmin(
+            @RequestParam(value = "status", required = false) String status,
+            @RequestParam(value = "searchBy", required = false) String searchBy, // <-- เพิ่มตัวนี้
+            @RequestParam(value = "search", required = false) String search,
+            Pageable pageable
+    ) {
+
+        // send parmiter to service
+        Page<NewsDto> pageOutput = newsService.getNewsByAdmin(status, searchBy, search, pageable);
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("x-total-count", String.valueOf(pageOutput.getTotalElements()));

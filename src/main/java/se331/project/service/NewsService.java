@@ -15,4 +15,6 @@ public interface NewsService {
     News save(News news);
     void deleteById(Long id);
     void updateIsDeleted(Long id, Boolean isDeleted);
+
+    Page<NewsDto> getNewsByAdmin(String status, String searchBy, String search, Pageable pageable);
 }

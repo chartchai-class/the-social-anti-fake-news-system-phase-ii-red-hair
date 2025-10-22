@@ -14,4 +14,8 @@ public interface NewsDao {
 
     News updateIsDeleted(Long id, Boolean isDeleted);
 
+    // for non-admin
+    Page<News> getNewsByAdmin(Pageable pageRequest);
+    Page<News> getNewsByAdmin(String status, String searchBy, String search, Pageable pageable);
+
 }

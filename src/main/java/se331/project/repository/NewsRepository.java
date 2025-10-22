@@ -36,4 +36,29 @@ public interface NewsRepository extends JpaRepository<News, Long> {
 
 
 
+    // Messy code starts here
+    // Return everything above with IsDeletedFalse
+    //findall
+    Page<News> findByIsDeletedFalse(Pageable pageable);
+
+    // only status
+    Page<News> findByVoteTypeAndIsDeletedFalse(String voteType, Pageable pageable);
+
+    // only search by
+    // only Title
+    Page<News> findByTitleContainingIgnoreCaseAndIsDeletedFalse(String title, Pageable pageable);
+    // only Description
+    Page<News> findByDescriptionContainingIgnoreCaseAndIsDeletedFalse(String description, Pageable pageable);
+    // only Reporter
+    Page<News> findByReporter_User_UsernameContainingIgnoreCaseAndIsDeletedFalse(String username, Pageable pageable);
+
+    //  Double Filter
+    // search  Status AND Title
+    Page<News> findByVoteTypeAndTitleContainingIgnoreCaseAndIsDeletedFalse(String voteType, String title, Pageable pageable);
+    // search  Status AND Description
+    Page<News> findByVoteTypeAndDescriptionContainingIgnoreCaseAndIsDeletedFalse(String voteType, String description, Pageable pageable);
+    // search Status AND Reporter
+    Page<News> findByVoteTypeAndReporter_User_UsernameContainingIgnoreCaseAndIsDeletedFalse(String voteType, String username, Pageable pageable);
+
+
 }

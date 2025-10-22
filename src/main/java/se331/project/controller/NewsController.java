@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import se331.project.dto.NewsDto;
 import se331.project.entity.News;
 import se331.project.service.NewsService;
+import software.amazon.awssdk.services.s3.endpoints.internal.Value;
 
 import java.time.LocalDateTime;
 
@@ -63,6 +64,17 @@ public class NewsController {
     public ResponseEntity<?> deleteNews(@PathVariable("id") Long id) {
         newsService.deleteById(id);
         // self remider for me that when successful delete it will normal show 204 ,
+        return ResponseEntity.noContent().build();
+    }
+
+    // to soft-delete toggle
+    @PostMapping("/news/{id}/toggle-delete")
+    public ResponseEntity<?> toggleSoftDeleteNews(@PathVariable Long id, @RequestBody News news) {
+        if (news.getIsDeleted() == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        Boolean newsIsDeleted = news.getIsDeleted();
+        newsService.updateIsDeleted(id, newsIsDeleted);
         return ResponseEntity.noContent().build();
     }
 }

@@ -48,6 +48,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST,"/uploadImage").permitAll()
                         .requestMatchers(HttpMethod.GET,"/news").permitAll()
                         .requestMatchers(HttpMethod.GET,"/news/{id}").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/news/{id}/toggle-delete").hasRole("ADMIN")
                         .anyRequest().authenticated();
             })
 

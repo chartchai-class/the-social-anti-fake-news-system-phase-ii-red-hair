@@ -1,9 +1,11 @@
 package se331.project.dao;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.server.ResponseStatusException;
 import se331.project.entity.News;
 import se331.project.repository.NewsRepository;
 
@@ -68,7 +70,27 @@ public class NewsDaoImpl implements NewsDao {
         }
     }
 
+    @Override
+    public News save(News news) {
+        return newsRepository.save(news);
+    }
 
+    @Override
+    public News updateIsDeleted(Long id, Boolean isDeleted) {
+        News news = newsRepository.findById(id).orElse(null);
+
+        if(news==null){
+            throw new EntityNotFoundException("News not found");
+        }
+        if(isDeleted == null){
+            throw new IllegalArgumentException("isDeleted must not be null");
+        }
+
+        if (news.getIsDeleted() == isDeleted) { return news; } //do nth
+
+        news.setIsDeleted(isDeleted);
+        return newsRepository.save(news);
+    }
 
 
 

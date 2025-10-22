@@ -34,12 +34,17 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public News save(News news) {
-        // can add security here for user role
-        return newsRepository.save(news);
+        return newsDao.save(news);
     }
 
     @Override
     public void deleteById(Long id) {
         newsRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateIsDeleted(Long id, Boolean isDeleted) {
+        News news = newsDao.updateIsDeleted(id, isDeleted);
+        AMapper.INSTANCE.getNewsDto(news);
     }
 }

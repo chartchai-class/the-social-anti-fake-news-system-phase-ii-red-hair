@@ -39,7 +39,7 @@ public class NewsDaoImpl implements NewsDao {
                 case "description":
                     return newsRepository.findByVoteTypeAndDescriptionContainingIgnoreCaseAndIsDeletedFalse(status, search, pageable);
                 case "reporter":
-                    return newsRepository.findByVoteTypeAndReporter_User_UsernameContainingIgnoreCaseAndIsDeletedFalse(status, search, pageable);
+                    return newsRepository.findByVoteTypeAndReporter_DisplayNameContainingIgnoreCaseAndIsDeletedFalse(status, search, pageable);
                 default:
                     return newsRepository.findByVoteTypeAndIsDeletedFalse(status, pageable);
             }
@@ -53,7 +53,7 @@ public class NewsDaoImpl implements NewsDao {
                 case "description":
                     return newsRepository.findByDescriptionContainingIgnoreCaseAndIsDeletedFalse(search, pageable);
                 case "reporter":
-                    return newsRepository.findByReporter_User_UsernameContainingIgnoreCaseAndIsDeletedFalse(search, pageable);
+                    return newsRepository.findByReporter_DisplayNameContainingIgnoreCaseAndIsDeletedFalse(search, pageable);
                 default:
                     return newsRepository.findAll(pageable);
             }
@@ -117,7 +117,7 @@ public class NewsDaoImpl implements NewsDao {
                 case "description":
                     return newsRepository.findByVoteTypeAndDescriptionContainingIgnoreCase(status, search, pageable);
                 case "reporter":
-                    return newsRepository.findByVoteTypeAndReporter_User_UsernameContainingIgnoreCase(status, search, pageable);
+                    return newsRepository.findByVoteTypeAndReporter_DisplayNameContainingIgnoreCase(status, search, pageable);
                 default:
                     return newsRepository.findByVoteType(status, pageable);
             }
@@ -131,7 +131,7 @@ public class NewsDaoImpl implements NewsDao {
                 case "description":
                     return newsRepository.findByDescriptionContainingIgnoreCase(search, pageable);
                 case "reporter":
-                    return newsRepository.findByReporter_User_UsernameContainingIgnoreCase(search, pageable);
+                    return newsRepository.findByReporter_DisplayNameContainingIgnoreCase(search, pageable);
                 default:
                     return newsRepository.findAll(pageable);
             }

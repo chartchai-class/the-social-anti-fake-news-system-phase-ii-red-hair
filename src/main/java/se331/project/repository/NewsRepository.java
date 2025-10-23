@@ -20,7 +20,7 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     Page<News> findByDescriptionContainingIgnoreCase(String description, Pageable pageable);
 
     // serch only Reporter
-    Page<News> findByReporter_User_UsernameContainingIgnoreCase(String username, Pageable pageable);
+    Page<News> findByReporter_DisplayNameContainingIgnoreCase(String username, Pageable pageable);
 
 
     //  Double Filter
@@ -32,7 +32,7 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     Page<News> findByVoteTypeAndDescriptionContainingIgnoreCase(String voteType, String description, Pageable pageable);
 
     // serch Status AND Reporter
-    Page<News> findByVoteTypeAndReporter_User_UsernameContainingIgnoreCase(String voteType, String username, Pageable pageable);
+    Page<News> findByVoteTypeAndReporter_DisplayNameContainingIgnoreCase(String voteType, String username, Pageable pageable);
 
 
 
@@ -50,7 +50,7 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     // only Description
     Page<News> findByDescriptionContainingIgnoreCaseAndIsDeletedFalse(String description, Pageable pageable);
     // only Reporter
-    Page<News> findByReporter_User_UsernameContainingIgnoreCaseAndIsDeletedFalse(String username, Pageable pageable);
+    Page<News> findByReporter_DisplayNameContainingIgnoreCaseAndIsDeletedFalse(String username, Pageable pageable);
 
     //  Double Filter
     // search  Status AND Title
@@ -58,7 +58,7 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     // search  Status AND Description
     Page<News> findByVoteTypeAndDescriptionContainingIgnoreCaseAndIsDeletedFalse(String voteType, String description, Pageable pageable);
     // search Status AND Reporter
-    Page<News> findByVoteTypeAndReporter_User_UsernameContainingIgnoreCaseAndIsDeletedFalse(String voteType, String username, Pageable pageable);
+    Page<News> findByVoteTypeAndReporter_DisplayNameContainingIgnoreCaseAndIsDeletedFalse(String voteType, String username, Pageable pageable);
 
 
 }

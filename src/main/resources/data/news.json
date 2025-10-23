@@ -1,0 +1,775 @@
+[
+  {
+    "title": "Tech Conference 2025 Opens in Bangkok",
+    "category": "Technology",
+    "reporter": "Alice Johnson",
+    "newsDateTime": "2025-08-10T10:00:00Z",
+    "description": "The biggest tech event of the year kicks off.",
+    "content": "The biggest technology gathering in Southeast Asia, Techsauce Global Summit 2025, officially opened in Bangkok today. Thousands of entrepreneurs, innovators, and researchers gathered to discuss the future of artificial intelligence, blockchain, green technology, and digital transformation. The event features keynote speeches from global industry leaders, workshops for startups, and networking opportunities for professionals in every tech field. Organizers expect this year's summit to draw a record number of participants, including venture capitalists and government representatives looking to foster digital growth in the region. Beyond technology, the summit also highlights Thailand's ambition to become a hub for innovation and entrepreneurship in Asia.",
+    "image": "https://i.pinimg.com/1200x/f7/e5/3c/f7e53c57dc40cfe95e1c4289a760cc0d.jpg",
+    "fakeCount": 5,
+    "notFakeCount": 15,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "author": "John Doe",
+        "content": "Yeah, I went to that event",
+        "image": "https://i.pinimg.com/736x/aa/cc/a9/aacca9eb667e487ee17832f8b0fd4341.jpg",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-10T12:30:00Z"
+      },
+      {
+        "author": "Jane Smith",
+        "content": "With my friends there!",
+        "image": "https://i.pinimg.com/1200x/b6/18/11/b6181147f14cbf318253d7e31db659a8.jpg",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-10T13:00:00Z"
+      },
+      {
+        "author": "Min Thant Ko",
+        "content": "I saw it on the news",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-10T13:00:00Z"
+      },
+      {
+        "author": "Wai Yan",
+        "content": "I didn't hear about it!",
+        "image": "",
+        "voteType": "fake",
+        "commentDateTime": "2025-08-10T13:00:00Z"
+      },
+      {
+        "author": "Phone Myat",
+        "content": "Nice!",
+        "image": "https://i.pinimg.com/1200x/c7/2e/7c/c72e7c451c58d102c4247a107354be90.jpg",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-10T13:00:00Z"
+      },
+      {
+        "author": "Ko Ko",
+        "content": "I gave a speech there!",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-10T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "New Electric Car Model Released",
+    "category": "Automotive",
+    "reporter": "Michael Brown",
+    "newsDateTime": "2025-08-11T09:00:00Z",
+    "description": "A groundbreaking EV model was revealed.",
+    "content": "A major automotive company has unveiled its latest electric vehicle, boasting a range of up to 700 kilometers on a single charge. This model introduces a revolutionary solid-state battery technology, allowing faster charging times and improved safety compared to traditional lithium-ion cells. In addition, the car comes equipped with advanced autonomous driving capabilities, improved AI-based navigation, and a lightweight body designed with eco-friendly materials. Industry experts predict that this release could disrupt the market and accelerate the global shift toward sustainable transportation. Consumers in Europe and Asia are expected to be the first to access the new model, with worldwide distribution planned for 2026.",
+    "image": "https://preview.thenewsmarket.com/Previews/ATFR/StillAssets/1920x1080/627757.jpg",
+    "fakeCount": 3,
+    "notFakeCount": 7,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 201,
+        "newsId": 2,
+        "author": "Tom Wilson",
+        "content": "Finally, long-range EVs are here!",
+        "image": "https://picsum.photos/id/1011/500/500.jpg",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-11T10:20:00Z"
+      },
+      {
+        "id": 202,
+        "newsId": 2,
+        "author": "Tom Wilson",
+        "content": "I don't think so",
+        "image": "https://picsum.photos/id/1013/500/500.jpg",
+        "voteType": "fake",
+        "commentDateTime": "2025-08-11T10:20:00Z"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Global Markets See Sudden Drop",
+    "category": "Finance",
+    "reporter": "Emma Davis",
+    "newsDateTime": "2025-08-12T08:00:00Z",
+    "description": "Stock markets tumble worldwide.",
+    "content": "Markets across Asia and Europe fell sharply this morning following concerns over slowing global growth and rising inflation. The Dow Jones Industrial Average dropped by 3.2%, while the FTSE 100 and Nikkei 225 experienced their worst single-day losses in months. Financial analysts attribute the decline to multiple factors, including disappointing quarterly earnings reports from major tech companies, escalating geopolitical tensions, and uncertainty surrounding central bank interest rate policies. Cryptocurrency markets also experienced significant volatility, with Bitcoin falling below $25,000 for the first time this year. Investment strategists warn that the current market conditions reflect broader economic uncertainties and advise investors to maintain diversified portfolios. The sell-off has wiped out approximately $2.5 trillion in global market value, raising concerns about potential recession indicators. Central banks worldwide are closely monitoring the situation and considering intervention measures to stabilize financial markets.",
+    "image": "https://img.freepik.com/premium-photo/global-market-crash-stock-chart-shows-dramatic-decline_1318161-4188.jpg",
+    "fakeCount": 15,
+    "notFakeCount": 7,
+    "voteType": "fake",
+    "comments": [
+      {
+        "id": 301,
+        "newsId": 3,
+        "author": "Alex Rodriguez",
+        "content": "This seems exaggerated. Markets are always volatile.",
+        "image": "",
+        "voteType": "fake",
+        "commentDateTime": "2025-08-12T09:15:00Z"
+      },
+      {
+        "id": 302,
+        "newsId": 3,
+        "author": "Maria Gonzalez",
+        "content": "I checked multiple sources, can't find confirmation",
+        "image": "",
+        "voteType": "fake",
+        "commentDateTime": "2025-08-12T09:30:00Z"
+      },
+      {
+        "id": 303,
+        "newsId": 3,
+        "author": "Investment Pro",
+        "content": "Market numbers don't match what I'm seeing",
+        "image": "",
+        "voteType": "fake",
+        "commentDateTime": "2025-08-12T10:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Record-Breaking Heatwave Hits Europe",
+    "category": "Environment",
+    "reporter": "Liam Wong",
+    "newsDateTime": "2025-08-13T15:00:00Z",
+    "description": "Extreme heat recorded in multiple countries.",
+    "content": "Several countries in Europe are experiencing record-breaking heat, with temperatures exceeding 45°C in some areas. Authorities warn of health risks and have implemented emergency cooling centers across major cities. The extreme weather has prompted widespread wildfires in Spain, Portugal, and southern France, forcing thousands of residents to evacuate their homes. Power grids are struggling to meet increased demand for air conditioning, leading to rolling blackouts in some regions. Agricultural sectors are reporting significant crop damage, with farmers implementing emergency irrigation measures to save their harvests. Meteorologists attribute the heatwave to a persistent high-pressure system combined with warm air masses from North Africa. Climate scientists emphasize that such extreme weather events are becoming more frequent due to global warming. The European Centre for Disease Prevention and Control has issued health advisories, particularly for vulnerable populations including the elderly and those with pre-existing medical conditions. Transportation systems are also affected, with some railway lines experiencing delays due to track expansion.",
+    "image": "https://www.ucdavis.edu/sites/default/files/media/images/uc-davis-climate-change-global-impact.jpg",
+    "fakeCount": 5,
+    "notFakeCount": 13,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 401,
+        "newsId": 4,
+        "author": "Sarah Lee",
+        "content": "Climate change is real!",
+        "image": "https://www.farminguk.com/images/news/61409_1.jpg",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-13T16:00:00Z"
+      },
+      {
+        "id": 402,
+        "newsId": 4,
+        "author": "Carlos Silva",
+        "content": "Experiencing this heat in Portugal right now. It's unbearable.",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-13T16:30:00Z"
+      },
+      {
+        "id": 403,
+        "newsId": 4,
+        "author": "Dr. Climate",
+        "content": "This is consistent with climate models we've been tracking",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-13T17:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Breakthrough in Cancer Research",
+    "category": "Health",
+    "reporter": "Noah Kim",
+    "newsDateTime": "2025-08-14T11:00:00Z",
+    "description": "Scientists announce new promising therapy.",
+    "content": "A new therapy tested on patients shows significant progress in reducing tumor size with minimal side effects. The innovative treatment, developed by researchers at leading medical institutions, utilizes a combination of immunotherapy and targeted drug delivery systems. Clinical trials involving over 500 patients with various cancer types demonstrated a 78% reduction in tumor size within six months of treatment initiation. Unlike traditional chemotherapy, this new approach specifically targets cancer cells while leaving healthy tissue largely unaffected. The therapy works by enhancing the body's natural immune response and delivering therapeutic agents directly to tumor sites using nanotechnology. Oncologists worldwide are hailing this as a potential game-changer in cancer treatment, offering hope to millions of patients and their families. The research team plans to expand trials to include pediatric cancer patients and explore applications for rare cancer types. Regulatory approval processes are already underway in several countries, with availability expected within the next two years. Patient advocacy groups are cautiously optimistic, emphasizing the need for continued research and accessible treatment options.",
+    "image": "https://img.pikbest.com/ai/illus_our/20230422/a23d886eb713edef683d2344a9d6690b.jpg",
+    "fakeCount": 0,
+    "notFakeCount": 90,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 501,
+        "newsId": 5,
+        "author": "Dr. Jennifer Walsh",
+        "content": "This research gives me hope for my patients",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-14T12:00:00Z"
+      },
+      {
+        "id": 502,
+        "newsId": 5,
+        "author": "Cancer Survivor",
+        "content": "Amazing progress! This could help so many people",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-14T12:30:00Z"
+      },
+      {
+        "id": 503,
+        "newsId": 5,
+        "author": "Research Advocate",
+        "content": "Excited to see this move to Phase III trials",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-14T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Major Cyberattack on Banking Systems",
+    "category": "Cybersecurity",
+    "reporter": "Sophia Martinez",
+    "newsDateTime": "2025-08-14T22:00:00Z",
+    "description": "Banks worldwide targeted by hackers.",
+    "content": "A coordinated cyberattack disrupted services in major banks across multiple countries, affecting millions of customers worldwide. The sophisticated attack targeted critical infrastructure systems, causing widespread service outages and raising concerns about financial system security. Preliminary investigations suggest the attack utilized advanced persistent threat (APT) techniques, with hackers gaining unauthorized access to internal networks through compromised credentials and zero-day exploits. Financial institutions in North America, Europe, and Asia reported disruptions to online banking services, ATM networks, and payment processing systems. Cybersecurity experts believe the attack was orchestrated by a highly organized criminal group, possibly with state-level resources and capabilities. The incident has prompted emergency response protocols, with banks working around the clock to restore services and strengthen their defensive measures. Regulatory agencies are conducting thorough investigations while coordinating with international law enforcement agencies. Customer data security remains a primary concern, though initial assessments suggest personal information was not compromised. The attack highlights the increasing vulnerability of financial systems to cyber threats and the need for enhanced cybersecurity measures across the banking industry.",
+    "image": "https://i.pinimg.com/1200x/33/16/25/331625b650b4f641f0692481439eecef.jpg",
+    "fakeCount": 27,
+    "notFakeCount": 10,
+    "voteType": "fake",
+    "comments": [
+      {
+        "id": 601,
+        "newsId": 6,
+        "author": "IT Security Expert",
+        "content": "Haven't seen any credible reports about this scale of attack",
+        "image": "",
+        "voteType": "fake",
+        "commentDateTime": "2025-08-14T23:00:00Z"
+      },
+      {
+        "id": 602,
+        "newsId": 6,
+        "author": "Bank Employee",
+        "content": "Our systems are running normally. This seems false.",
+        "image": "",
+        "voteType": "fake",
+        "commentDateTime": "2025-08-14T23:15:00Z"
+      },
+      {
+        "id": 603,
+        "newsId": 6,
+        "author": "Cyber Analyst",
+        "content": "No major security alerts from any banking authorities",
+        "image": "",
+        "voteType": "fake",
+        "commentDateTime": "2025-08-14T23:30:00Z"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "AI Robot Assists in Surgery",
+    "category": "Technology",
+    "reporter": "David Green",
+    "newsDateTime": "2025-08-15T14:30:00Z",
+    "description": "AI used in complex surgery.",
+    "content": "Doctors successfully completed a complex cardiac surgery with the assistance of an AI-powered robotic system, reducing operation time by 40% and improving precision significantly. The groundbreaking procedure took place at a leading medical center, where surgeons utilized the advanced robotic platform to perform intricate heart valve repairs. The AI system provided real-time analysis of patient vitals, tissue conditions, and surgical progress, enabling surgeons to make more informed decisions throughout the procedure. The robotic arms, guided by machine learning algorithms, demonstrated unprecedented stability and accuracy in delicate tissue manipulation. This successful surgery represents a major milestone in medical technology, combining human expertise with artificial intelligence to achieve optimal patient outcomes. The patient, a 62-year-old individual with severe aortic stenosis, recovered remarkably quickly with minimal complications. Medical professionals worldwide are closely monitoring this development, as it could revolutionize surgical procedures across multiple specialties. The technology promises to make complex surgeries more accessible in regions with limited surgical expertise while reducing patient recovery times and hospital stays. Future applications may extend to neurosurgery, orthopedics, and minimally invasive procedures.",
+    "image": "https://img.freepik.com/premium-photo/ai-robots-enhance-surgical-precision_466739-17380.jpg",
+    "fakeCount": 1,
+    "notFakeCount": 100,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 701,
+        "newsId": 7,
+        "author": "Cardiac Surgeon",
+        "content": "Incredible advancement in surgical technology!",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-15T15:00:00Z"
+      },
+      {
+        "id": 702,
+        "newsId": 7,
+        "author": "Medical Student",
+        "content": "The future of surgery is here",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-15T15:30:00Z"
+      },
+      {
+        "id": 703,
+        "newsId": 7,
+        "author": "Healthcare Tech",
+        "content": "AI integration in medicine is progressing rapidly",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-15T16:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "SpaceX Launches New Mission to Mars",
+    "category": "Space",
+    "reporter": "Olivia White",
+    "newsDateTime": "2025-08-15T20:00:00Z",
+    "description": "Historic mission to colonize Mars begins.",
+    "content": "SpaceX successfully launched its latest Starship rocket carrying essential equipment and a crew of six astronauts for the ambitious Mars colonization program, marking humanity's most significant step toward becoming a multi-planetary species. The massive rocket, standing 120 meters tall, lifted off from Kennedy Space Center carrying advanced life support systems, construction equipment, and scientific instruments needed to establish a permanent human presence on Mars. The crew includes specialists in geology, biology, engineering, and medicine, each selected after rigorous training programs designed to prepare them for the challenging Martian environment. The mission represents the culmination of decades of technological development and testing, with SpaceX having successfully demonstrated orbital refueling, long-duration spaceflight capabilities, and advanced heat shield technology. The journey to Mars will take approximately seven months, during which the crew will conduct scientific experiments and maintain critical systems. Upon arrival, they will begin construction of habitat modules and life support infrastructure using resources extracted from the Martian atmosphere and soil. This historic mission has captured global attention, with millions following the live stream of the launch. Space agencies worldwide have praised the achievement as a monumental step forward in space exploration and human expansion beyond Earth.",
+    "image": "https://www.teslarati.com/wp-content/uploads/2020/12/Starship-2019-Mars-base-render-SpaceX-1-crop-close-c.jpg",
+    "fakeCount": 0,
+    "notFakeCount": 120,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 801,
+        "newsId": 8,
+        "author": "Chris Evans",
+        "content": "History in the making!",
+        "image": "https://picsum.photos/id/1013/100/100.jpg",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-15T21:00:00Z"
+      },
+      {
+        "id": 802,
+        "newsId": 8,
+        "author": "Space Enthusiast",
+        "content": "Watched the launch live - absolutely incredible!",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-15T21:30:00Z"
+      },
+      {
+        "id": 803,
+        "newsId": 8,
+        "author": "NASA Engineer",
+        "content": "Proud to witness this milestone for humanity",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-15T22:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "New Gaming Console Announced",
+    "category": "Entertainment",
+    "reporter": "Daniel Scott",
+    "newsDateTime": "2025-08-16T09:00:00Z",
+    "description": "Next-gen console set to release this winter.",
+    "content": "The gaming industry was shaken by the announcement of a revolutionary new console that promises to deliver unprecedented 8K graphics, ultra-fast loading times under two seconds, and comprehensive support for immersive virtual and augmented reality experiences. The console, developed by a collaboration between major tech companies, features a custom-designed processor architecture that delivers 3x the performance of current-generation systems while consuming 40% less power. The innovative cooling system utilizes liquid cooling technology typically found in high-end gaming PCs, ensuring optimal performance during extended gaming sessions. The console supports ray tracing in real-time, advanced AI-driven graphics enhancement, and backwards compatibility with thousands of existing games. The integrated VR headset offers 4K per eye resolution with a 120Hz refresh rate, providing incredibly smooth and detailed virtual experiences. Cloud gaming integration allows players to access their game libraries from anywhere with high-speed internet connectivity. The console also introduces haptic feedback controllers that can simulate various textures, temperatures, and resistances, creating a more immersive gaming experience. Pre-orders are expected to begin next month, with a planned release date in December 2025. Industry analysts predict this console could define the next decade of gaming entertainment.",
+    "image": "https://www.kiwikidsnews.co.nz/wp-content/uploads/2023/05/project-q.jpg",
+    "fakeCount": 25,
+    "notFakeCount": 43,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 901,
+        "newsId": 9,
+        "author": "Gamer_Pro",
+        "content": "8K gaming is finally here! Can't wait to preorder",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-16T10:00:00Z"
+      },
+      {
+        "id": 902,
+        "newsId": 9,
+        "author": "Tech Reviewer",
+        "content": "Specs sound too good to be true. Need to see real demos",
+        "image": "",
+        "voteType": "fake",
+        "commentDateTime": "2025-08-16T10:30:00Z"
+      },
+      {
+        "id": 903,
+        "newsId": 9,
+        "author": "VR Developer",
+        "content": "Exciting times for VR gaming development!",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-16T11:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "World Leaders Meet for Climate Summit",
+    "category": "Politics",
+    "reporter": "Sophia Turner",
+    "newsDateTime": "2025-08-16T18:00:00Z",
+    "description": "Urgent talks on climate crisis.",
+    "content": "Leaders from over 50 countries gathered in Geneva for an emergency climate summit to discuss unprecedented commitments toward reducing global carbon emissions and accelerating the transition to renewable energy sources. The three-day summit, hosted by the United Nations, addresses the urgent need for coordinated global action as climate scientists warn that current emission reduction targets are insufficient to prevent catastrophic climate change. Participating nations are negotiating binding agreements that would require a 70% reduction in greenhouse gas emissions by 2035, significantly more ambitious than previous commitments. The summit features presentations from leading climate scientists, renewable energy experts, and economists who outline both the challenges and opportunities of rapid decarbonization. Major topics include massive investments in solar and wind infrastructure, development of carbon capture technologies, protection of critical ecosystems, and financial support for developing nations transitioning away from fossil fuels. Several breakthrough announcements have emerged, including a $500 billion international green energy fund and commitments from major economies to phase out coal power by 2030. Environmental groups are cautiously optimistic about the summit's outcomes, emphasizing that implementation and enforcement mechanisms will be crucial for success. The final agreement is expected to be signed by all participating nations before the summit concludes.",
+    "image": "https://static.srpcdigital.com/styles/1037xauto/public/2022/11/07/_2022-11-07t102648z_1884510536_rc2xgx9770be_rtrmadp_3_climate-un-1667816995.jpg",
+    "fakeCount": 4,
+    "notFakeCount": 50,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 1001,
+        "newsId": 10,
+        "author": "Climate Activist",
+        "content": "Finally seeing the urgency this crisis deserves",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-16T19:00:00Z"
+      },
+      {
+        "id": 1002,
+        "newsId": 10,
+        "author": "Environmental Scientist",
+        "content": "These targets are ambitious but necessary",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-16T19:30:00Z"
+      },
+      {
+        "id": 1003,
+        "newsId": 10,
+        "author": "Policy Analyst",
+        "content": "Implementation will be the real challenge here",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-16T20:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Breakthrough in Renewable Energy Storage",
+    "category": "Environment",
+    "reporter": "Helen Carter",
+    "newsDateTime": "2025-08-17T10:00:00Z",
+    "description": "New technology boosts battery efficiency.",
+    "content": "Scientists at a European research institute unveiled a breakthrough in renewable energy storage with a new type of ultra-efficient battery. This battery significantly increases storage capacity for solar and wind energy, reduces charging time, and extends overall lifespan. By solving one of the key challenges in renewable energy deployment, this technology could allow entire cities to rely fully on sustainable power. Researchers are optimistic that the invention will attract commercial interest worldwide, accelerating the global transition to clean energy and helping mitigate climate change.",
+    "image": "https://i.pinimg.com/736x/11/33/c3/1133c311922eab415667aaf4738e4a55.jpg",
+    "fakeCount": 2,
+    "notFakeCount": 30,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 1101,
+        "newsId": 11,
+        "author": "Energy Engineer",
+        "content": "This could solve the intermittency problem with renewables",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-17T11:00:00Z"
+      },
+      {
+        "id": 1102,
+        "newsId": 11,
+        "author": "Solar Installer",
+        "content": "Game changer for the solar industry!",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-17T11:30:00Z"
+      },
+      {
+        "id": 1103,
+        "newsId": 11,
+        "author": "Green Tech Investor",
+        "content": "Definitely looking into investing in this technology",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-17T12:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "International Film Festival Opens",
+    "category": "Entertainment",
+    "reporter": "Lucas Moore",
+    "newsDateTime": "2025-08-17T18:00:00Z",
+    "description": "Celebrating global cinema.",
+    "content": "The annual International Film Festival kicked off in Venice, showcasing a diverse range of films from around the world. Directors, actors, and film enthusiasts gathered to celebrate creativity, storytelling, and cultural exchange. Highlights include premieres of independent films addressing social issues, cutting-edge visual effects productions, and documentaries spotlighting global challenges. Festival organizers emphasize that this event promotes collaboration, innovation, and cross-cultural understanding in the cinematic world. Award ceremonies are expected to honor outstanding achievements in filmmaking, screenplay writing, and acting.",
+    "image": "https://www.canberra.edu.au/__data/assets/image/0008/1649834/Filmmaking1.jpg",
+    "fakeCount": 3,
+    "notFakeCount": 25,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 1201,
+        "newsId": 12,
+        "author": "Film Critic",
+        "content": "Amazing lineup this year! Several must-see premieres",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-17T19:00:00Z"
+      },
+      {
+        "id": 1202,
+        "newsId": 12,
+        "author": "Indie Director",
+        "content": "Proud to have my film selected for screening",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-17T19:30:00Z"
+      },
+      {
+        "id": 1203,
+        "newsId": 12,
+        "author": "Cinema Lover",
+        "content": "Venice Film Festival never disappoints",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-17T20:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Global Food Prices Reach Record High",
+    "category": "Economy",
+    "reporter": "Rachel Adams",
+    "newsDateTime": "2025-08-18T09:00:00Z",
+    "description": "Food inflation worries experts.",
+    "content": "Global food prices have surged to record highs due to extreme weather, supply chain disruptions, and rising demand. Analysts warn that prolonged increases could exacerbate hunger and poverty in vulnerable regions. Governments are considering intervention measures, including subsidies, export controls, and increased investment in sustainable agriculture. Economists emphasize that long-term solutions require addressing climate change, improving farming efficiency, and ensuring fair trade practices. Consumers are feeling the impact in grocery stores, while markets are responding with volatility.",
+    "image": "https://cdn.pixabay.com/photo/2024/05/10/10/51/food-8752928_1280.jpg",
+    "fakeCount": 28,
+    "notFakeCount": 8,
+    "voteType": "fake",
+    "comments": [
+      {
+        "id": 1301,
+        "newsId": 13,
+        "author": "Economics Analyst",
+        "content": "This is alarming. Governments must act fast.",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-18T10:00:00Z"
+      },
+      {
+        "id": 1302,
+        "newsId": 13,
+        "author": "Concerned Citizen",
+        "content": "My grocery bills have doubled in a month!",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-18T10:30:00Z"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Breakthrough in Quantum Computing",
+    "category": "Technology",
+    "reporter": "Victor Chen",
+    "newsDateTime": "2025-08-18T15:00:00Z",
+    "description": "Quantum computer achieves new milestone.",
+    "content": "Researchers announced a major advancement in quantum computing, achieving stable qubit operation at room temperature. This breakthrough could accelerate the development of quantum algorithms for cryptography, simulation, and artificial intelligence. Industry leaders emphasize that practical quantum computers will revolutionize computing power, enabling solutions to problems that are currently unsolvable with classical machines. The research team plans to collaborate with tech companies to scale the technology for commercial applications in the coming years.",
+    "image": "https://bernardmarr.com/wp-content/uploads/2023/07/Quantum-Computing_-What-Every-CEO-Needs-to-Know.jpg",
+    "fakeCount": 2,
+    "notFakeCount": 40,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 1401,
+        "newsId": 14,
+        "author": "Tech Enthusiast",
+        "content": "Quantum computing is finally becoming practical!",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-18T16:00:00Z"
+      },
+      {
+        "id": 1402,
+        "newsId": 14,
+        "author": "AI Researcher",
+        "content": "Excited to see how this will accelerate AI breakthroughs.",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-18T16:30:00Z"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Global Electric Aircraft Test Flight Successful",
+    "category": "Aviation",
+    "reporter": "Ethan Roberts",
+    "newsDateTime": "2025-08-19T08:00:00Z",
+    "description": "First electric commercial plane completes test flight.",
+    "content": "A prototype electric aircraft successfully completed its first test flight, demonstrating the potential for zero-emission commercial aviation. The aircraft, powered by advanced lithium-sulfur batteries, flew for two hours without any operational issues. Engineers monitored energy efficiency, aerodynamics, and safety systems throughout the flight. Aviation experts say this milestone could drastically reduce the carbon footprint of air travel and pave the way for large-scale adoption of electric aircraft within the next decade. Airlines are showing strong interest in investing in this new technology to meet global sustainability goals.",
+    "image": "https://img.freepik.com/free-photo/futuristic-airplane-electric-flight_1150-43150.jpg",
+    "fakeCount": 4,
+    "notFakeCount": 50,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 1501,
+        "newsId": 15,
+        "author": "Aviation Fan",
+        "content": "The future of clean air travel is here!",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-19T09:00:00Z"
+      },
+      {
+        "id": 1502,
+        "newsId": 15,
+        "author": "Environmental Advocate",
+        "content": "This could drastically reduce aviation emissions. Amazing!",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-19T09:30:00Z"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Major Breakthrough in Alzheimer’s Treatment",
+    "category": "Health",
+    "reporter": "Sophia Kim",
+    "newsDateTime": "2025-08-19T12:00:00Z",
+    "description": "New therapy slows Alzheimer’s progression.",
+    "content": "Scientists have developed a new therapy that shows significant promise in slowing the progression of Alzheimer’s disease. The treatment targets specific proteins in the brain responsible for neurodegeneration, preserving cognitive functions in early-stage patients. Clinical trials report improved memory retention and daily functioning, offering hope to millions of families worldwide. Experts stress that while more trials are needed, this breakthrough could change the landscape of dementia care, making it possible to manage symptoms more effectively and improve patients’ quality of life.",
+    "image": "https://i.pinimg.com/736x/5e/a4/fa/5ea4fac29c34f6afb933b08f3880a187.jpg",
+    "fakeCount": 3,
+    "notFakeCount": 65,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 1601,
+        "newsId": 16,
+        "author": "Healthcare Professional",
+        "content": "A breakthrough like this is a beacon of hope for patients.",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-19T13:00:00Z"
+      },
+      {
+        "id": 1602,
+        "newsId": 16,
+        "author": "Patient Advocate",
+        "content": "Excited to see clinical trials continue successfully.",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-19T13:30:00Z"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Breakthrough Fusion Energy Reactor Produces Net Power",
+    "category": "Energy",
+    "reporter": "Liam Foster",
+    "newsDateTime": "2025-08-20T09:00:00Z",
+    "description": "Fusion reactor generates more energy than it consumes.",
+    "content": "Scientists operating an experimental nuclear fusion reactor announced that the system achieved net-positive energy production for the first time. The reactor uses deuterium and tritium fuel to produce energy safely and with minimal radioactive waste. This achievement represents a major step toward commercial fusion power plants that could provide a virtually limitless source of clean energy. Energy experts predict that if the technology scales successfully, it could revolutionize global energy markets and drastically reduce dependence on fossil fuels within a generation.",
+    "image": "https://i.pinimg.com/1200x/af/9e/e2/af9ee2cb8944b647eab2bbdbf8ceb4a0.jpg",
+    "fakeCount": 5,
+    "notFakeCount": 80,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 1701,
+        "newsId": 17,
+        "author": "Energy Expert",
+        "content": "Fusion power finally showing real potential!",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-20T10:00:00Z"
+      },
+      {
+        "id": 1702,
+        "newsId": 17,
+        "author": "Environmentalist",
+        "content": "Clean energy like this could change the world.",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-20T10:30:00Z"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "title": "Major International Sports Event Announced for 2026",
+    "category": "Sports",
+    "reporter": "Ava Thompson",
+    "newsDateTime": "2025-08-20T15:00:00Z",
+    "description": "World-class sporting event coming next year.",
+    "content": "The International Sports Federation announced that the 2026 Global Games will be hosted in a consortium of cities across Europe and Asia. The event will feature competitions in over 30 sports disciplines, including emerging disciplines such as esports and drone racing. Organizers highlight new sustainability initiatives for stadiums, transportation, and athlete accommodations to reduce environmental impact. Fans worldwide are preparing to travel and participate in this unprecedented international celebration of sportsmanship, innovation, and culture.",
+    "image": "https://i.pinimg.com/1200x/39/4a/85/394a8514c21be4c0fc80e3d2a9879019.jpg",
+    "fakeCount": 25,
+    "notFakeCount": 4,
+    "voteType": "fake",
+    "comments": [
+      {
+        "id": 1801,
+        "newsId": 18,
+        "author": "Sports Fan",
+        "content": "Can’t wait for next year! Exciting sports lineup.",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-20T16:00:00Z"
+      },
+      {
+        "id": 1802,
+        "newsId": 18,
+        "author": "Travel Blogger",
+        "content": "Planning my trips already! Amazing international event.",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-20T16:30:00Z"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "title": "Breakthrough in Water Purification Technology",
+    "category": "Environment",
+    "reporter": "Mia Lopez",
+    "newsDateTime": "2025-08-21T08:00:00Z",
+    "description": "New technology promises clean water for remote areas.",
+    "content": "Researchers have developed an innovative water purification system capable of removing 99.9% of contaminants using solar-powered filtration. The compact system can be deployed in remote and disaster-affected areas, providing communities with safe drinking water. Engineers designed it to be low-maintenance, cost-effective, and scalable, potentially benefiting millions of people lacking access to clean water. Governments and NGOs are already planning pilot programs to test large-scale implementation of the technology.",
+    "image": "https://img.freepik.com/free-photo/clean-water-purification-system_1150-43220.jpg",
+    "fakeCount": 1,
+    "notFakeCount": 35,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 1901,
+        "newsId": 19,
+        "author": "NGO Worker",
+        "content": "This tech could save countless lives in remote areas.",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-21T09:00:00Z"
+      },
+      {
+        "id": 1902,
+        "newsId": 19,
+        "author": "Engineer",
+        "content": "Impressive engineering! Solar-powered filtration is brilliant.",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-21T09:30:00Z"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Historic Agreement Reached on Global AI Ethics",
+    "category": "Technology",
+    "reporter": "Noah Sanders",
+    "newsDateTime": "2025-08-21T14:00:00Z",
+    "description": "World leaders agree on global AI ethics guidelines.",
+    "content": "In a landmark international meeting, leaders and tech experts agreed on a unified framework for AI ethics, addressing transparency, accountability, and data privacy. The guidelines are intended to prevent misuse of AI in areas such as surveillance, autonomous weapons, and discriminatory decision-making. Representatives from over 80 countries signed the agreement, signaling global cooperation in developing responsible AI. Advocates hope the framework will guide future legislation, promote innovation, and ensure that AI technologies benefit humanity as a whole while minimizing risks and societal harm.",
+    "image": "https://i.pinimg.com/736x/61/7c/e2/617ce20b95c238bd8afca6b8ce8cb2bd.jpg",
+    "fakeCount": 5,
+    "notFakeCount": 90,
+    "voteType": "not-fake",
+    "comments": [
+      {
+        "id": 2001,
+        "newsId": 20,
+        "author": "AI Developer",
+        "content": "Finally, some global coordination on AI ethics!",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-21T15:00:00Z"
+      },
+      {
+        "id": 2002,
+        "newsId": 20,
+        "author": "Policy Analyst",
+        "content": "Hope this leads to responsible AI legislation worldwide.",
+        "image": "",
+        "voteType": "not-fake",
+        "commentDateTime": "2025-08-21T15:30:00Z"
+      }
+    ]
+  }
+]

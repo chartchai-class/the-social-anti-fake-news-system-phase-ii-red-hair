@@ -1,5 +1,7 @@
 package se331.project.config;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -18,12 +20,17 @@ import se331.project.security.user.User;
 import se331.project.security.user.UserRepository;
 
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 @Component
 @RequiredArgsConstructor
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
+    private final ObjectMapper objectMapper;
 
     final UserProfileRepository userProfileRepository;
     final NewsRepository newsRepository;
@@ -35,136 +42,74 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Transactional
     public void onApplicationEvent(ApplicationReadyEvent event) {
 
-
+        //Set up user and user profiles
         addUser();
         addUserProfile();
 
         admin1.setUserProfile(adminProfile1);
         member1.setUserProfile(memberProfile1);
+        member2.setUserProfile(memberProfile2);
+        member3.setUserProfile(memberProfile3);
         reader1.setUserProfile(readerProfile1);
+        reader2.setUserProfile(readerProfile2);
+        userRepository.saveAll(List.of(admin1, member1, member2, member3, reader1, reader2));
 
         adminProfile1.setUser(admin1);
         memberProfile1.setUser(member1);
+        memberProfile2.setUser(member2);
+        memberProfile3.setUser(member3);
         readerProfile1.setUser(reader1);
+        readerProfile2.setUser(reader2);
+        userProfileRepository.saveAll(List.of(adminProfile1, memberProfile1, memberProfile2, memberProfile3, readerProfile1, readerProfile2));
 
 
 
+        //Create News and comments
+        try(InputStream inputStream = getClass().getResourceAsStream("/data/news.json");){
+            List<Map<String, Object>> newsList = objectMapper.readValue(inputStream, new TypeReference<>(){});
 
-        News news1 = News.builder().title("member news01").category("Technology").reporter(memberProfile1).newsDateTime(LocalDateTime.now().minusDays(1)).description("A new study reveals that cats are officially the supreme rulers of all online content.").content("In a landmark study, researchers have concluded that the internet is a sophisticated system for sharing cat pictures.").image("https://placekitten.com/800/400").fakeCount(10).notFakeCount(150).build();
-        news1.setVoteType(calculateVoteType(news1));
-        newsRepository.save(news1);
+            for(Map<String, Object> singleNews: newsList){
+                News news = News.builder()
+                        .title((String) singleNews.get("title"))
+                        .category((String) singleNews.get("category"))
+                        .reporter(getRandomUserProfile())
+                        .newsDateTime(LocalDateTime.now().minusDays(1))
+                        .description((String) singleNews.get("description"))
+                        .content((String) singleNews.get("content"))
+                        .image((String) singleNews.get("image"))
+                        .fakeCount((Integer) singleNews.get("fakeCount"))
+                        .notFakeCount((Integer) singleNews.get("notFakeCount"))
+                        .isDeleted(false)
+                        .build();
+                news.setVoteType(calculateVoteType(news));
+                newsRepository.save(news);
 
-        News news2 = News.builder().title("member news02").category("Health").reporter(memberProfile1).newsDateTime(LocalDateTime.now().minusDays(2)).description("A local resident has now seen the light regarding the popular breakfast item.").content("John Doe, 34, today admitted that his long-standing opposition to avocado toast was 'misguided'.").image("https://images.unsplash.com/photo-1582572288450-e2d17c7a5f3a").fakeCount(120).notFakeCount(5).build();
-        news2.setVoteType(calculateVoteType(news2));
-        newsRepository.save(news2);
-
-        News news3 = News.builder().title("member news03").category("Science").reporter(memberProfile1).newsDateTime(LocalDateTime.now().minusHours(5)).description("Years of research have finally confirmed what office workers have known for decades.").content("A peer-reviewed study has proven that coffee consumption is directly correlated with the ability to tolerate morning meetings.").image("https://images.unsplash.com/photo-1511920183353-3c2c5d7d549b").fakeCount(2).notFakeCount(200).build();
-        news3.setVoteType(calculateVoteType(news3));
-        newsRepository.save(news3);
-
-        News news4 = News.builder().title("member news04").category("Local News").reporter(memberProfile1).newsDateTime(LocalDateTime.now().minusDays(3)).description("Local bird feeders are empty, and authorities are pointing fingers at a highly organized squirrel syndicate.").content("Witnesses report seeing squirrels using complex diversion tactics and advanced climbing techniques.").image("https://images.unsplash.com/photo-1504283284728-def757a35368").fakeCount(50).notFakeCount(55).build();
-        news4.setVoteType(calculateVoteType(news4));
-        newsRepository.save(news4);
-
-        News news5 = News.builder().title("member news05").category("Conspiracy").reporter(memberProfile1).newsDateTime(LocalDateTime.now().minusDays(5)).description("A growing online community claims that water isn't real. We investigate.").content("The 'Dry Earth' society posits that what we perceive as water is actually a complex government-induced hallucination.").image("https://images.unsplash.com/photo-1523362628745-0c371c17b446").fakeCount(250).notFakeCount(3).build();
-        news5.setVoteType(calculateVoteType(news5));
-        newsRepository.save(news5);
-
-        News news6 = News.builder().title("member news06").category("Lifestyle").reporter(memberProfile1).newsDateTime(LocalDateTime.now().minusDays(4)).description("By putting off tasks, you can effectively arrive in the future without doing any of the work.").content("Researchers have noted that by deciding to do something 'tomorrow,' subjects could skip an entire day of productivity.").image("https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d").fakeCount(33).notFakeCount(42).build();
-        news6.setVoteType(calculateVoteType(news6));
-        newsRepository.save(news6);
-
-
-
-        // News by admin (adminProfile1)
-        News news7 = News.builder()
-                .title("admin news01 - Policy Change")
-                .category("Politics")
-                .reporter(adminProfile1)
-                .newsDateTime(LocalDateTime.now().minusDays(1))
-                .description("A new policy regarding internet usage has been announced by admin.")
-                .content("Full details of the policy are available on the government website.")
-                .image("https://images.unsplash.com/photo-1504711434969-e33886168f5c")
-                .fakeCount(5)
-                .notFakeCount(100)
-                .build();
-        news7.setVoteType(calculateVoteType(news7));
-        newsRepository.save(news7);
-
-        News news8 = News.builder()
-                .title("admin news02 - Security Breach")
-                .category("Security")
-                .reporter(adminProfile1)
-                .newsDateTime(LocalDateTime.now().minusDays(3))
-                .description("A major security breach is reportedly fake, says admin.")
-                .content("Sources claim the 'breach' was just a test.")
-                .image("https://images.unsplash.com/photo-1570172619642-13c72b8d3f38")
-                .fakeCount(300)
-                .notFakeCount(10)
-                .build();
-        news8.setVoteType(calculateVoteType(news8));
-        newsRepository.save(news8);
-
-        News news9 = News.builder()
-                .title("admin news03 - Local Festival")
-                .category("Local News")
-                .reporter(adminProfile1)
-                .newsDateTime(LocalDateTime.now().minusDays(5))
-                .description("The annual flower festival has been confirmed by admin.")
-                .content("The event will take place next weekend.")
-                .image("https://images.unsplash.com/photo-1518621736915-f3b17a1d02da")
-                .fakeCount(1)
-                .notFakeCount(50)
-                .build();
-        news9.setVoteType(calculateVoteType(news9));
-        newsRepository.save(news9);
-
-
-
-        Comment comment1 = Comment.builder()
-                .news(news1)
-                .author(readerProfile1)
-                .content("test word test word test word test word test word test word test word test word test word")
-                .image("https://images.unsplash.com/photo-1582572288450-e2d17c7a5f3a")
-                .voteType("not-fake")
-                .commentDateTime(LocalDateTime.now().minusHours(10))
-                .build();
-        commentRepository.save(comment1);
-
-        Comment comment2 = Comment.builder()
-                .news(news1)
-                .author(readerProfile1)
-                .content(" Test comment02.")
-                .image("https://images.unsplash.com/photo-1511920183353-3c2c5d7d549b")
-                .voteType("not-fake")
-                .commentDateTime(LocalDateTime.now().minusHours(9))
-                .build();
-        commentRepository.save(comment2);
-
-        Comment comment3 = Comment.builder()
-                .news(news2)
-                .author(readerProfile1)
-                .content("Test comment03.")
-                .voteType("fake")
-                .commentDateTime(LocalDateTime.now().minusDays(1))
-                .build();
-        commentRepository.save(comment3);
-
-        Comment comment4 = Comment.builder()
-                .news(news1)
-                .author(readerProfile1)
-                .content("Test comment04")
-                .voteType("not-fake")
-                .commentDateTime(LocalDateTime.now().minusHours(10))
-                .build();
-        commentRepository.save(comment4);
-
-
+                // get comments for news if exists
+                List<Map<String, Object>> comments = (List<Map<String, Object>>) singleNews.get("comments");
+                if(comments!=null && comments.size()>0){
+                    for(Map<String,Object> singleComment : comments){
+                        Comment comment = Comment.builder()
+                                .news(news)
+                                .author(getRandomUserProfile())
+                                .content((String) singleComment.get("content"))
+                                .image((String) singleComment.get("image"))
+                                .voteType((String) singleComment.get("voteType"))
+                                .commentDateTime(LocalDateTime.now())
+                                .isDeleted(false)
+                                .build();
+                        commentRepository.save(comment);
+                    }
+                }
+            }
+        }catch(Error | IOException error){
+            System.out.println(error.getMessage());
+        }
 
     }
 
 
-    User admin1, member1, reader1;
+    // create users and userprofiles by hardcode, I thought its more easier to add this way if there is only few users.
+    User admin1, member1, member2, member3, reader1, reader2;
     private void addUser(){
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         admin1 = User.builder()
@@ -179,50 +124,97 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .enabled(true)
                 .build();
 
+        member2 = User.builder()
+                .username("member2")
+                .password(passwordEncoder.encode("password"))
+                .enabled(true)
+                .build();
+
+        member3 = User.builder()
+                .username("member3")
+                .password(passwordEncoder.encode("password"))
+                .enabled(true)
+                .build();
+
         reader1 = User.builder()
                 .username("reader")
                 .password(passwordEncoder.encode("password"))
                 .enabled(true)
                 .build();
 
+        reader2 = User.builder()
+                .username("reader2")
+                .password(passwordEncoder.encode("password"))
+                .enabled(true)
+                .build();
+
         admin1.getRoles().add(Role.ROLE_ADMIN);
         member1.getRoles().add(Role.ROLE_MEMBER);
+        member2.getRoles().add(Role.ROLE_MEMBER);
+        member3.getRoles().add(Role.ROLE_MEMBER);
         reader1.getRoles().add(Role.ROLE_READER);
+        reader2.getRoles().add(Role.ROLE_READER);
 
-        userRepository.saveAll(List.of(admin1, member1, reader1));
+        userRepository.saveAll(List.of(admin1, member1, member2, member3, reader1, reader2));
     }
 
-    UserProfile adminProfile1, memberProfile1, readerProfile1;
+    UserProfile adminProfile1, memberProfile1, memberProfile2, memberProfile3, readerProfile1, readerProfile2;
     private void addUserProfile(){
         adminProfile1 = UserProfile.builder()
-                .displayName("admin")
-                .firstName("admin_firstname")
-                .lastName("admin_lastname")
-                .email("admin@test.com")
+                .displayName("Starlight Anya")
+                .firstName("Anya")
+                .lastName("Forger")
+                .email("admin@gmail.com")
                 .profileImage("https://i.pinimg.com/736x/32/82/8a/32828a1554ad31ff44c5d4bd948cfdd7.jpg")
                 .phoneNumber("123456789")
                 .build();
-        userProfileRepository.save(adminProfile1);
 
         memberProfile1 = UserProfile.builder()
-                .displayName("member")
-                .firstName("member_firstname")
-                .lastName("member_lastname")
-                .email("member@test.com")
-                .profileImage("https://i.pinimg.com/736x/e7/b7/85/e7b785d2cba3004447e07b421391b2fd.jpg")
+                .displayName("Twilight")
+                .firstName("Loid")
+                .lastName("Forger")
+                .email("loid@gmail.com")
+                .profileImage("https://i.pinimg.com/736x/f9/b1/74/f9b174063029cd681bb79b639c8d5d8c.jpg")
                 .phoneNumber("123456789")
                 .build();
-        userProfileRepository.save(memberProfile1);
+
+        memberProfile2 = UserProfile.builder()
+                .displayName("David")
+                .firstName("David")
+                .lastName("Beckham")
+                .email("david@gmail.com")
+                .profileImage("https://i.pinimg.com/736x/86/a5/c3/86a5c37c37d23f7536736592a4ded72e.jpg")
+                .phoneNumber("123456789")
+                .build();
+
+        memberProfile3 = UserProfile.builder()
+                .displayName("Cutie Emily")
+                .firstName("Emily")
+                .lastName("Stark")
+                .email("emily@gmail.com")
+                .profileImage("https://i.pinimg.com/736x/af/ab/f2/afabf2b1a33b7a5f0e87fd5b28f06963.jpg")
+                .phoneNumber("09889923")
+                .build();
 
         readerProfile1 = UserProfile.builder()
-                .displayName("reader")
-                .firstName("reader_firstname")
-                .lastName("reader_lastname")
-                .email("reader@test.com")
-                .profileImage("https://i.pinimg.com/736x/39/86/91/398691f123726a5763e9c47980964fff.jpg")
+                .displayName("Thorn Princess")
+                .firstName("Yor")
+                .lastName("Forger")
+                .email("yor@test.com")
+                .profileImage("https://i.pinimg.com/1200x/eb/8c/77/eb8c771917321bfe3873970d7793458f.jpg")
                 .phoneNumber("123456789")
                 .build();
-        userProfileRepository.save(readerProfile1);
+
+        readerProfile2 = UserProfile.builder()
+                .displayName("Rosy")
+                .firstName("Rosy")
+                .lastName("Posy")
+                .email("rosy@gmail.com")
+                .profileImage("https://i.pinimg.com/736x/8b/07/c2/8b07c2157f3f96e50d7cc1741d78c2f3.jpg")
+                .phoneNumber("123456789")
+                .build();
+
+        userProfileRepository.saveAll(List.of(adminProfile1, memberProfile1, memberProfile2, memberProfile3, readerProfile1, readerProfile2));
     }
 
 
@@ -233,5 +225,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         } else {
             return "not-fake";
         }
+    }
+
+    // to assign random users as a news reporter
+    private UserProfile getRandomUserProfile(){
+        List<UserProfile> userProfileList= List.of(adminProfile1, memberProfile1, memberProfile2, memberProfile3);
+        int randomIndex = new Random().nextInt(userProfileList.size());
+
+        return userProfileList.get(randomIndex);
     }
 }

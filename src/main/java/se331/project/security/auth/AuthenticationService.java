@@ -48,7 +48,7 @@ public class AuthenticationService {
             .firstName(request.getFirstName())
             .lastName(request.getLastName())
             .email(request.getEmail())
-            .displayName(request.getUsername())
+            .displayName(request.getDisplayName())
             .profileImage(request.getProfileImage())
             .phoneNumber(request.getPhoneNumber())
             .build();

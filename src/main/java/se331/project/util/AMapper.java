@@ -22,13 +22,13 @@ public interface AMapper {
 
 
     // mapper for news part
-    @Mapping(target = "reporter", source = "reporter.user.username")
+    @Mapping(target = "reporter", source = "reporter.displayName")
     NewsDto getNewsDto(News news);
     List<NewsDto> getNewsDto(List<News> news);
 
 
     // a mapper for comment
-    @Mapping(target = "author", source = "author.user.username")
+    @Mapping(target = "author", source = "author.displayName")
     @Mapping(target = "image", source = "image")
     CommentDto getCommentDto(Comment comment);
     List<CommentDto> getCommentDto(List<Comment> comments);

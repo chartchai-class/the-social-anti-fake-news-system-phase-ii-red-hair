@@ -22,6 +22,7 @@ public class NewsDto {
     Integer fakeCount;
     Integer notFakeCount;
     String voteType;
+    Boolean isDeleted;
 //    UserProfileDto reporter; // just temp, can create NewsUserDto and update
     String reporter;
     List<CommentDto> comments;

@@ -185,8 +185,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .enabled(true)
                 .build();
 
-        admin1.getRoles().addAll(List.of(Role.ROLE_ADMIN, Role.ROLE_MEMBER, Role.ROLE_READER));
-        member1.getRoles().addAll(List.of(Role.ROLE_MEMBER, Role.ROLE_READER));
+        admin1.getRoles().add(Role.ROLE_ADMIN);
+        member1.getRoles().add(Role.ROLE_MEMBER);
         reader1.getRoles().add(Role.ROLE_READER);
 
         userRepository.saveAll(List.of(admin1, member1, reader1));

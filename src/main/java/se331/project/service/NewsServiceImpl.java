@@ -27,6 +27,16 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    public Page<NewsDto> getNewsByAdmin(String status, String searchBy, String search, Pageable pageable) {
+
+        // logic will be in dao
+        Page<News> newsPage = newsDao.getNewsByAdmin(status, searchBy, search, pageable);
+
+        //convert data with mapstruct before sending it back
+        return newsPage.map(AMapper.INSTANCE::getNewsDto);
+    }
+
+    @Override
     public NewsDto getNewsById(Long id) {
         News news = newsRepository.findById(id).orElse(null);
         return AMapper.INSTANCE.getNewsDto(news);
@@ -34,12 +44,17 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public News save(News news) {
-        // can add security here for user role
-        return newsRepository.save(news);
+        return newsDao.save(news);
     }
 
     @Override
     public void deleteById(Long id) {
         newsRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateIsDeleted(Long id, Boolean isDeleted) {
+        News news = newsDao.updateIsDeleted(id, isDeleted);
+        AMapper.INSTANCE.getNewsDto(news);
     }
 }

@@ -34,6 +34,8 @@ public class News {
     private Integer fakeCount;
     private Integer notFakeCount;
     private String voteType;
+    @Builder.Default
+    private Boolean isDeleted=Boolean.FALSE;
 
     // new can oly by one user
     @ManyToOne

@@ -10,5 +10,12 @@ public interface NewsDao {
     // new method for get all parameters
     Page<News> getNews(String status, String searchBy, String search, Pageable pageable);
 
+    News save(News news);
+
+    News updateIsDeleted(Long id, Boolean isDeleted);
+
+    // for non-admin
+    Page<News> getNewsByAdmin(Pageable pageRequest);
+    Page<News> getNewsByAdmin(String status, String searchBy, String search, Pageable pageable);
 
 }

@@ -14,6 +14,7 @@ public class CommentDto {
     Long id;
     String content;
     String voteType;
+    Boolean isDeleted;
     LocalDateTime commentDateTime;
     String image;
     // change auther in enttity into userdto for not have news

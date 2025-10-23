@@ -2,7 +2,10 @@ package se331.project.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import se331.project.dao.CommentDao;
 import se331.project.dto.CommentDto;
 import se331.project.entity.Comment;
 import se331.project.entity.News;
@@ -20,6 +23,8 @@ public class CommentServiceImpl implements CommentService {
     final CommentRepository commentRepository;
     final NewsRepository newsRepository;
     final UserProfileRepository userProfileRepository;
+
+    final CommentDao commentDao;
 
     @Override
     @Transactional
@@ -44,6 +49,7 @@ public class CommentServiceImpl implements CommentService {
         } else if ("not-fake".equals(comment.getVoteType())) {
             relatedNews.setNotFakeCount(relatedNews.getNotFakeCount() + 1);
         }
+        relatedNews.setVoteType(computeVoteTypeForNews(relatedNews)); //I think we need to calculate and send from backend instead of calculating in frontend. feel free to delete this if there is already compution in another place ( i probably might have missed that).
 
         // save all change
         newsRepository.save(relatedNews);
@@ -88,5 +94,53 @@ public class CommentServiceImpl implements CommentService {
 
         //delete comment in database
         commentRepository.delete(commentToDelete);
+    }
+
+    @Override
+    @Transactional
+    public void updateIsDeleted(Long id, Boolean isDeleted) {
+        Comment commentToUpdate= commentRepository.findById(id).orElse(null);
+        if (commentToUpdate == null) { return;}
+        if(commentToUpdate.getIsDeleted() == isDeleted){ return; };
+
+        // manage vote type for news before deleting
+        News relatedNews = commentToUpdate.getNews();
+        if (relatedNews != null) {
+            if ("fake".equals(commentToUpdate.getVoteType()) && isDeleted==false) {
+                relatedNews.setFakeCount(relatedNews.getFakeCount() + 1);
+            } else if ("not-fake".equals(commentToUpdate.getVoteType()) && isDeleted==false) {
+                relatedNews.setNotFakeCount(relatedNews.getNotFakeCount() + 1);
+            } else if ("fake".equals(commentToUpdate.getVoteType()) && isDeleted==true) {
+                relatedNews.setFakeCount(relatedNews.getFakeCount() - 1);
+            } else if ("not-fake".equals(commentToUpdate.getVoteType()) && isDeleted==true) {
+                relatedNews.setNotFakeCount(relatedNews.getNotFakeCount() - 1);
+            }
+            relatedNews.setVoteType(computeVoteTypeForNews(relatedNews));
+            newsRepository.save(relatedNews);
+        }
+
+        // actual soft delete from repo -- my code seems redundant here for calling comment id to find comment and update again in the method. feel free to refactor later.
+        commentDao.updateIsDeleted(id, isDeleted);
+    }
+
+    // non-admin users can get only visible comments
+    @Override
+    public Page<CommentDto> getCommentsByNewsId(Long newsId,Pageable pageRequest){
+        Page<Comment> commentPage = commentDao.getCommentsByNewsId(newsId, pageRequest);
+
+        return commentPage.map(comment -> AMapper.INSTANCE.getCommentDto(comment));
+    }
+
+    // admin gets all comments including deleted
+    @Override
+    public Page<CommentDto> getCommentsByNewsIdByAdmin(Long newsId, Pageable pageRequest) {
+        Page<Comment> commentPage = commentDao.getCommentsByNewsIdByAdmin(newsId, pageRequest);
+
+        return commentPage.map(comment -> AMapper.INSTANCE.getCommentDto(comment));
+    }
+
+    //helper
+    private String computeVoteTypeForNews(News news){
+        return news.getFakeCount()>news.getNotFakeCount()?"fake":"not-fake";
     }
 }

@@ -36,8 +36,8 @@ public class NewsDaoImpl implements NewsDao {
             switch (searchBy.toLowerCase()) {
                 case "title":
                     return newsRepository.findByVoteTypeAndTitleContainingIgnoreCaseAndIsDeletedFalse(status, search, pageable);
-                case "description":
-                    return newsRepository.findByVoteTypeAndDescriptionContainingIgnoreCaseAndIsDeletedFalse(status, search, pageable);
+                case "content":
+                    return newsRepository.findByVoteTypeAndContentContainingIgnoreCaseAndIsDeletedFalse(status, search, pageable);
                 case "reporter":
                     return newsRepository.findByVoteTypeAndReporter_DisplayNameContainingIgnoreCaseAndIsDeletedFalse(status, search, pageable);
                 default:
@@ -50,8 +50,8 @@ public class NewsDaoImpl implements NewsDao {
             switch (searchBy.toLowerCase()) {
                 case "title":
                     return newsRepository.findByTitleContainingIgnoreCaseAndIsDeletedFalse(search, pageable);
-                case "description":
-                    return newsRepository.findByDescriptionContainingIgnoreCaseAndIsDeletedFalse(search, pageable);
+                case "content":
+                    return newsRepository.findByContentContainingIgnoreCaseAndIsDeletedFalse(search, pageable);
                 case "reporter":
                     return newsRepository.findByReporter_DisplayNameContainingIgnoreCaseAndIsDeletedFalse(search, pageable);
                 default:
@@ -114,8 +114,8 @@ public class NewsDaoImpl implements NewsDao {
             switch (searchBy.toLowerCase()) {
                 case "title":
                     return newsRepository.findByVoteTypeAndTitleContainingIgnoreCase(status, search, pageable);
-                case "description":
-                    return newsRepository.findByVoteTypeAndDescriptionContainingIgnoreCase(status, search, pageable);
+                case "content":
+                    return newsRepository.findByVoteTypeAndContentContainingIgnoreCase(status, search, pageable);
                 case "reporter":
                     return newsRepository.findByVoteTypeAndReporter_DisplayNameContainingIgnoreCase(status, search, pageable);
                 default:
@@ -128,8 +128,8 @@ public class NewsDaoImpl implements NewsDao {
             switch (searchBy.toLowerCase()) {
                 case "title":
                     return newsRepository.findByTitleContainingIgnoreCase(search, pageable);
-                case "description":
-                    return newsRepository.findByDescriptionContainingIgnoreCase(search, pageable);
+                case "content":
+                    return newsRepository.findByContentContainingIgnoreCase(search, pageable);
                 case "reporter":
                     return newsRepository.findByReporter_DisplayNameContainingIgnoreCase(search, pageable);
                 default:

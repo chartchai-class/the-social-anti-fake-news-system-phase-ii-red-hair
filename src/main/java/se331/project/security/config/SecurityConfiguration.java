@@ -77,7 +77,7 @@ public class SecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOriginPatterns(List.of("http://localhost:5173", "http://13.212.6.216:8001")); //NEED to add frontend VM url here
+        config.setAllowedOriginPatterns(List.of("http://localhost:5173", "http://13.212.6.216:8001", "http://52.90.19.10:8001")); //NEED to add frontend VM url here
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setExposedHeaders(List.of("x-total-count"));

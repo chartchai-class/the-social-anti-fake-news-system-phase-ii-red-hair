@@ -25,7 +25,7 @@ public class NewsController {
     @GetMapping("/news")
     public ResponseEntity<?> getNews(
             @RequestParam(value = "status", required = false) String status,
-            @RequestParam(value = "searchBy", required = false) String searchBy, // <-- เพิ่มตัวนี้
+            @RequestParam(value = "searchBy", required = false) String searchBy, 
             @RequestParam(value = "search", required = false) String search,
             Pageable pageable
     ) {
@@ -42,7 +42,7 @@ public class NewsController {
     @GetMapping("/admin/news")
     public ResponseEntity<?> getNewsByAdmin(
             @RequestParam(value = "status", required = false) String status,
-            @RequestParam(value = "searchBy", required = false) String searchBy, // <-- เพิ่มตัวนี้
+            @RequestParam(value = "searchBy", required = false) String searchBy, 
             @RequestParam(value = "search", required = false) String search,
             Pageable pageable
     ) {
